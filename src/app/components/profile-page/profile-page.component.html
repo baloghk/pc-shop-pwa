@@ -1,1 +1,20 @@
-<p>profile-page works!</p>
+<div class="profile-wrapper">
+    <div class="header">
+        <h2>SZEMÉLYES ADATOK</h2>
+        <button mat-button class="changepw_btn">Jelszó módosítása</button>
+    </div>
+    <div>
+        <h4>ADATAID</h4>
+        <div class="profile_data">
+            <p>{{ name }}</p>
+            <p>E-mail: {{ email }}</p>
+            <p>Felhasználónév: {{ username }}</p>
+        </div>
+    </div>
+    <div>
+        <h4>CÍMEID</h4>
+        <div class="profile_data">
+            <p>Még nincsenek mentett címeid</p>
+        </div>
+    </div>
+</div>
