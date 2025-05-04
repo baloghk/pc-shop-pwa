@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: blueviolet;
+  transition: transform 0.3s ease;
+  padding: 15px 45px;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar div {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  padding-right: 45px;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: gray;
+}
+
+main, router-outlet {
+  display: block;
+  margin-top: 100px;
+}
+
+.search-bar-container {
+  height: 35px;
+  padding: 0px 30px 0px 2px;
+  background: white;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+ input {
+    width: 40vw;
+    font-size: 0,75rem;
+    outline: none;
+    border: none;
+    background: inherit;
+    min-width: 150px;
+  }
+
+  mat-icon {
+    color: black;
+    font-size: 1.5rem;
+  }
