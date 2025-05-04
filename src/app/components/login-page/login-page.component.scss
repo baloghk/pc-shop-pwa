@@ -1,0 +1,59 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 400px;
+    margin: auto;
+}
+
+.login-form h3 {
+    align-self: flex-start;
+}
+
+.name-fields {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+}
+
+.name-fields mat-form-field {
+    flex: 1;
+}
+
+mat-form-field {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  mat-form-field input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    color: black !important;
+  }
+
+button {
+    background-color: blueviolet;
+    text-align: center;
+    width: 100%;
+    border-radius: 0px;
+    color: white !important;
+    font-size: 1rem;
+    height: 50px;
+}
+
+.reg_btn {
+    margin-top: 15px;
+    background-color: rgb(77, 23, 128);
+}
+
+mat-label {
+    color: black;
+    
+}

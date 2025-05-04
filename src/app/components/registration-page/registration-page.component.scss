@@ -46,8 +46,13 @@ button {
     color: white !important;
     font-size: 1rem;
     height: 50px;
+    margin-bottom: 0;
 }
 
 mat-label {
     color: black;
+}
+
+p {
+    font-size: 0.85rem;
 }

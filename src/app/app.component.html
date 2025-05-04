@@ -1,5 +1,5 @@
 <nav class="navbar" [class.hidden]="!navbarVisible">
-  <div>iBit</div>
+  <div><a routerLink="/" class="Logo">iBit</a></div>
   <div class="search-bar-container">
     <button mat-icon-button>
       <mat-icon>search</mat-icon>
@@ -7,11 +7,8 @@
     <input type="text" placeholder="Keresés..." class="search-input" />
   </div>
   <ul class="navbar-links">
-    <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/cart">Cart</a></li>
-    <li><a routerLink="/product">Product</a></li>
     <li><a routerLink="/login">Login</a></li>
-    <li><a routerLink="/registration">Registration</a></li>
     <li><a routerLink="/profile">Profile</a></li>
     <mat-icon style="color: white">shopping_cart</mat-icon>
   </ul>
