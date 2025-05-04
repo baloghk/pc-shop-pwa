@@ -1,1 +1,35 @@
-<p>registration-page works!</p>
+<div class="registration-form">
+        <h3>REGISZTRÁCIÓ</h3>
+            <form>
+                <div class="name-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Vezetéknév</mat-label>
+                      <input type="text" matInput formControlName="forename">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Keresztnév</mat-label>
+                      <input type="text" matInput formControlName="surname">
+                    </mat-form-field>
+                  </div> 
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Felhasználónév</mat-label>
+                    <input type="text" matInput formControlName="username">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Jelszó</mat-label>
+                    <input type="password" matInput formControlName="password">
+                </mat-form-field>
+              <div class="button">
+                <button type="submit" mat-button> <mat-icon style="color: white">person_add</mat-icon> Regisztrálok</button>
+              </div>
+            
+            </form>
+            <p>A regisztrációval elfogadom a Felhasználási feltételeket és az Adatvédelmi nyilatkozatot.</p>
+</div>
+
