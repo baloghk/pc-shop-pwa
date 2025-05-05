@@ -1,7 +1,9 @@
 <nav class="navbar" [class.hidden]="!navbarVisible">
   <div class="navbar-left">
     <div><a routerLink="/" class="logo">iBit</a></div>
-    <button class="menu_btn" mat-button (click)="toggleMenu()">Menü <mat-icon>{{ isMenuOpen ? 'expand_less' : 'expand_more' }}</mat-icon></button>
+    <button class="menu_btn" mat-button (click)="toggleMenu()">
+      Menü <mat-icon>{{ isMenuOpen ? "expand_less" : "expand_more" }}</mat-icon>
+    </button>
     <div class="search-bar-container">
       <button mat-icon-button>
         <mat-icon>search</mat-icon>
@@ -9,11 +11,13 @@
       <input type="text" placeholder="Keresés..." class="search-input" />
     </div>
   </div>
-  
+
   <ul class="navbar-right">
     <li><a routerLink="/login">Bejelentkezés</a></li>
     <li><a routerLink="/profile">Profil</a></li>
-    <li><a routerLink="/cart"><mat-icon class= "cart">shopping_cart</mat-icon></a></li>
+    <li>
+      <a routerLink="/cart"><mat-icon class="cart">shopping_cart</mat-icon></a>
+    </li>
   </ul>
 </nav>
 
@@ -21,9 +25,9 @@
 
 <nav class="menu" [class.hidden]="!menuVisible">
   <ul>
-    <li><a routerLink="/product">Számítógép</a></li>
-    <li><a routerLink="/product">Notebook</a></li>
-    <li><a routerLink="/product">Periféria</a></li>
+    <li><a routerLink="/product" (click)="toggleMenu()">Számítógép</a></li>
+    <li><a routerLink="/product" (click)="toggleMenu()">Notebook</a></li>
+    <li><a routerLink="/product" (click)="toggleMenu()">Periféria</a></li>
   </ul>
 </nav>
 <router-outlet></router-outlet>

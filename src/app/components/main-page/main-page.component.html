@@ -1,14 +1,14 @@
 <p>main-page works!</p>
 
 <ul>
-    <li *ngFor="let product of products" style="padding-bottom: 20px">
-      {{ product.name }}
-      <br />
-      {{ product.cost }}
-      <br />
-      {{ product.desc }}
-      <button mat-button (click)="managementService.createProduct(product)">
-        Buy
-      </button>
-    </li>
-  </ul>
+  <li *ngFor="let product of products" style="padding-bottom: 20px">
+    {{ product.name }}
+    <br />
+    {{ product.price }}
+    <br />
+    {{ product.desc }}
+    <button mat-button (click)="managementService.createProduct(product)">
+      Buy
+    </button>
+  </li>
+</ul>

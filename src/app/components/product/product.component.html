@@ -1,1 +1,12 @@
-<p>product works!</p>
+<div *ngFor="let product of Products">
+  <mat-card class="product-card">
+    <img mat-card-image [src]="product.image" alt="{{ product.name }}" />
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    {{ product.price | currency : "HUF" }}
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/product', product.id]">
+        Adatlap
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
