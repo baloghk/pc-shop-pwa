@@ -6,7 +6,7 @@ import { MatButton } from '@angular/material/button';
 import { MatCardImage } from '@angular/material/card';
 import { Product } from '../../shared/product';
 import { NgFor } from '@angular/common';
-import { CurrencyPipe } from '../../shared/currency.pipe';
+import { CurrencyPipe } from '../../shared/currency-pipe/currency.pipe';
 import { Router } from '@angular/router';
 
 @Component({
@@ -32,7 +32,7 @@ export class ProductComponent {
       id: 1,
       name: 'Product 1',
       image: 'pictures/cpu_test.png',
-      price: 100,
+      price: 1000,
       desc: 'Description 1',
       quantity: 1,
     },
@@ -40,7 +40,7 @@ export class ProductComponent {
       id: 2,
       name: 'Product 2',
       image: 'pictures/cpu_test.png',
-      price: 200,
+      price: 2000,
       desc: 'Description 2',
       quantity: 1,
     },

@@ -10,6 +10,12 @@
       </button>
       <input type="text" placeholder="Keresés..." class="search-input" />
     </div>
+    <button class="currency" mat-button (click)="toggleCurrencyMenu()">
+      {{ selectedCurrency }}
+      <mat-icon>{{
+        isCurrencyMenuOpen ? "expand_less" : "expand_more"
+      }}</mat-icon>
+    </button>
   </div>
 
   <ul class="navbar-right">
@@ -21,13 +27,45 @@
   </ul>
 </nav>
 
-<div class="overlay" [class.active]="isMenuOpen"></div>
+<div class="overlay" [class.active]="isMenuOpen || isCurrencyMenuOpen"></div>
 
 <nav class="menu" [class.hidden]="!menuVisible">
   <ul>
     <li><a routerLink="/product" (click)="toggleMenu()">Számítógép</a></li>
     <li><a routerLink="/product" (click)="toggleMenu()">Notebook</a></li>
     <li><a routerLink="/product" (click)="toggleMenu()">Periféria</a></li>
+  </ul>
+</nav>
+
+<nav class="currency-menu" [class.hidden]="!currencyMenuVisible">
+  <ul>
+    <li>
+      <button
+        mat-button
+        class="currency-menu-item"
+        (click)="changeCurrency('HUF')"
+      >
+        HUF
+      </button>
+    </li>
+    <li>
+      <button
+        mat-button
+        class="currency-menu-item"
+        (click)="changeCurrency('EUR')"
+      >
+        EUR
+      </button>
+    </li>
+    <li>
+      <button
+        mat-button
+        class="currency-menu-item"
+        (click)="changeCurrency('USD')"
+      >
+        USD
+      </button>
+    </li>
   </ul>
 </nav>
 <router-outlet></router-outlet>

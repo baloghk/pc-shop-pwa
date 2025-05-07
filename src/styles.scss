@@ -1,7 +1,51 @@
-body {
+body,
+html {
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   background-color: rgb(243, 243, 243);
+}
+
+button,
+.mat-button,
+.mat-raised-button,
+.mat-icon-button,
+.mat-fab,
+.mat-mini-fab,
+.mat-menu-item,
+.mat-card,
+.mat-card-title,
+.mat-card-content,
+.mat-card-subtitle,
+.mat-card-header,
+.mat-card-footer,
+.mat-card-actions,
+.mat-toolbar,
+.mat-sidenav,
+.mat-list-item,
+.mat-chip,
+.mat-tab-label,
+.mat-table,
+.mat-input-element,
+.mat-form-field-label,
+.mat-checkbox-label,
+.mat-radio-label,
+.mat-select,
+.mat-select-value,
+.mat-expansion-panel,
+.mat-dialog-title,
+.mat-dialog-content,
+.mat-snack-bar-container,
+.mat-tooltip,
+.mat-paginator,
+.mat-step-label,
+.mat-slide-toggle-label,
+.mat-tree,
+.mat-badge,
+.mat-mdc-card-title {
+  font-family: "Raleway", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
