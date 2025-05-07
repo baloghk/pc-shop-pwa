@@ -41,24 +41,61 @@ export class ManagementService {
   }
 
   public createProduct(product: Product): void {
-    // Object store tranzakció létrehozása és object store lekérése
-    const objectStore = this.db
-      .transaction(this.objectStoreName, 'readwrite')
-      .objectStore(this.objectStoreName);
-    const request = objectStore.add(product); // "add" request létrehozása
+    // Először ellenőrizzük, hogy létezik-e már a termék (pl. név alapján)
+    const transaction = this.db.transaction(this.objectStoreName, 'readwrite');
+    const objectStore = transaction.objectStore(this.objectStoreName);
 
-    // Sikeres request lekezelése
+    // Index alapján keresünk (pl. név index)
+    const index = objectStore.index('nameIndex');
+    const request = index.get(product.name);
+
     request.onsuccess = (event: any) => {
-      const newProduct: Product = {
-        ...product,
-        id: event.target.result, // A "result" a létrehozott épület ID-ja lesz
-      };
-      this.products.push(newProduct); // Memóriában tárolt épületek frissítése
+      const existingProduct = event.target.result;
+
+      if (existingProduct) {
+        // Ha létezik, növeljük a quantity értéket
+        existingProduct.quantity = (existingProduct.quantity || 0) + 1;
+
+        // Frissítjük az adatbázisban
+        const updateRequest = objectStore.put(existingProduct);
+
+        updateRequest.onsuccess = () => {
+          console.log('Termék mennyisége frissítve:', existingProduct);
+
+          // Memóriában is frissítjük a terméket
+          const index = this.products.findIndex(
+            (p) => p.id === existingProduct.id
+          );
+          if (index !== -1) {
+            this.products[index] = existingProduct;
+          }
+        };
+
+        updateRequest.onerror = (event: any) => {
+          console.log('Hiba a termék frissítésekor:', event.target.error);
+        };
+      } else {
+        // Ha nem létezik, hozzáadjuk az új terméket
+        const addRequest = objectStore.add(product);
+
+        addRequest.onsuccess = (event: any) => {
+          const newProduct: Product = {
+            ...product,
+            id: event.target.result, // Új ID mentése
+            quantity: 1, // Mennyiség kezdeti értéke
+          };
+          this.products.push(newProduct);
+          console.log('Új termék hozzáadva:', newProduct);
+        };
+
+        addRequest.onerror = (event: any) => {
+          console.log('Hiba a termék hozzáadásakor:', event.target.error);
+        };
+      }
     };
 
-    // Request error lekezelése
     request.onerror = (event: any) => {
-      console.log('Error adding item:', event.target.error);
+      console.log('Hiba a termék lekérdezésekor:', event.target.error);
     };
   }
 

@@ -1,15 +1,15 @@
-<div *ngFor="let product of Products">
+<div *ngFor="let product of Products" class="products-container">
   <mat-card class="product-card">
     <img mat-card-image [src]="product.image" alt="{{ product.name }}" />
-    <mat-card-title>{{ product.name }}</mat-card-title>
-
-    <div class="price-and-action">
+    <div class="product-name">
+      <mat-card-title>{{ product.name }}</mat-card-title>
+    </div>
+    <div class="price">
       <div class="price">{{ product.price | currency : "HUF" }}</div>
-
+    </div>
+    <div class="action">
       <mat-card-actions class="card-buttons">
-        <button mat-button [routerLink]="['/product', product.id]">
-          Adatlap
-        </button>
+        <button mat-button (click)="goToProduct(product)">Adatlap</button>
       </mat-card-actions>
     </div>
   </mat-card>

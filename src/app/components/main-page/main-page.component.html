@@ -1,14 +1,11 @@
-<p>main-page works!</p>
-
-<ul>
-  <li *ngFor="let product of products" style="padding-bottom: 20px">
-    {{ product.name }}
-    <br />
-    {{ product.price }}
-    <br />
-    {{ product.desc }}
-    <button mat-button (click)="managementService.createProduct(product)">
-      Buy
+<div class="main-page">
+  <div>
+    <img src="{{ images[currentIndex] }}" alt="doom" />
+    <button class="left_btn" mat-icon-button (click)="prevSlide()">
+      <mat-icon>chevron_left</mat-icon>
     </button>
-  </li>
-</ul>
+    <button class="right_btn" mat-icon-button (click)="nextSlide()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

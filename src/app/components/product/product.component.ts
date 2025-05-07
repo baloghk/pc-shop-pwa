@@ -7,7 +7,7 @@ import { MatCardImage } from '@angular/material/card';
 import { Product } from '../../shared/product';
 import { NgFor } from '@angular/common';
 import { CurrencyPipe } from '../../shared/currency.pipe';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -20,12 +20,13 @@ import { RouterLink } from '@angular/router';
     MatButton,
     NgFor,
     CurrencyPipe,
-    RouterLink,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
+  constructor(private router: Router) {}
+
   Products: Product[] = [
     {
       id: 1,
@@ -33,6 +34,7 @@ export class ProductComponent {
       image: 'pictures/cpu_test.png',
       price: 100,
       desc: 'Description 1',
+      quantity: 1,
     },
     {
       id: 2,
@@ -40,6 +42,11 @@ export class ProductComponent {
       image: 'pictures/cpu_test.png',
       price: 200,
       desc: 'Description 2',
+      quantity: 1,
     },
   ];
+
+  goToProduct(product: Product): void {
+    this.router.navigate(['/product-page'], { state: { product } });
+  }
 }

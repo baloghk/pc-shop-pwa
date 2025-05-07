@@ -1,8 +1,16 @@
+.products-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 16px;
+  background-color: #f5f5f5;
+}
+
 .product-card {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.1);
-  margin: 16px;
+  margin: 0px;
   width: 275px;
   height: 325px;
   display: flex;
@@ -12,34 +20,49 @@
   overflow: hidden;
   transition: all 0.3s ease;
 
+  .product-name {
+    width: 100%;
+    text-align: left;
+    margin-left: 50px;
+  }
+
   img {
+    margin-top: 10px;
     width: 75%;
   }
 
-  .price-and-action {
+  .price {
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    left: 5px;
+    bottom: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .action {
     position: absolute;
     bottom: 0;
     left: 16px;
     right: 16px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    padding-bottom: 8px;
-    transition: transform 0.3s ease;
+    justify-content: flex-end;
+    transition: transform 0.5s ease;
   }
 
   .price {
     font-size: 18px;
     font-weight: bold;
-    text-align: center;
-    margin-bottom: 4px;
-    transition: transform 0.3s ease;
+    text-align: bottom;
+    margin-left: 10px;
+    transition: transform 0.5s ease;
   }
 
   .card-buttons {
-    transform: translateY(20px);
+    transform: translateY(40px);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.3s ease;
     display: flex;
     justify-content: center;
 
@@ -53,10 +76,12 @@
   }
 
   &:hover {
-    .price-and-action {
+    .price {
       transform: translateY(-20px);
     }
-
+    .action {
+      transform: translateY(-5px);
+    }
     .card-buttons {
       transform: translateY(0);
       opacity: 1;

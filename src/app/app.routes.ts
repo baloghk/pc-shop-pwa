@@ -5,6 +5,7 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { ProductComponent } from './components/product/product.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'product',
     component: ProductComponent,
+  },
+  {
+    path: 'product-page',
+    component: ProductPageComponent,
   },
   {
     path: '**',

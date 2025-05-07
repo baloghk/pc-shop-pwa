@@ -1,32 +1,26 @@
 import { Component } from '@angular/core';
-import { Product } from '../../shared/product';
-import { NgFor } from '@angular/common';
-import { ManagementService } from '../../services/management.service';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-main-page',
-  imports: [NgFor],
+  imports: [MatIconButton, MatIcon],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
 export class MainPageComponent {
-  constructor(public managementService: ManagementService) {}
+  currentIndex = 0;
 
-  products: Product[] = [
-    {
-      name: 'Product 1',
-      price: 100,
-      desc: 'Description of Product 1',
-    },
-    {
-      name: 'Product 2',
-      price: 200,
-      desc: 'Description of Product 2',
-    },
-    {
-      name: 'Product 3',
-      price: 300,
-      desc: 'Description of Product 3',
-    },
+  images = [
+    'pictures/slide_1.jpg',
+    'pictures/slide_2.jpg',
+    'pictures/slide_1.jpg',
   ];
+
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % 3;
+  }
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + 3) % 3;
+  }
 }

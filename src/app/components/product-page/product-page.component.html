@@ -1,1 +1,24 @@
-<p>product-page works!</p>
+<div class="product-page">
+  <h1>{{ product.name }}</h1>
+  <p>Cikkszám: {{ product.id }}</p>
+
+  <div>
+    <div>
+      <img [src]="product.image" alt="{{ product.name }}" />
+    </div>
+
+    <div>
+      <p><strong>Leírás:</strong> {{ product.desc }}</p>
+    </div>
+
+    <div>
+      <p><strong>Jótállás:</strong> 2 év</p>
+    </div>
+
+    <div>
+      <button mat-button (click)="managementService.createProduct(product)">
+        Kosárba
+      </button>
+    </div>
+  </div>
+</div>
