@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../shared/product';
 import { MatButton } from '@angular/material/button';
-import { ManagementService } from '../../services/management.service';
+import { ManagementService } from '../../services/management/management.service';
 import { CurrencyPipe } from '../../shared/currency-pipe/currency.pipe';
 
 @Component({

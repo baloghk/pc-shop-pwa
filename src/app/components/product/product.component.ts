@@ -44,6 +44,38 @@ export class ProductComponent {
       desc: 'Description 2',
       quantity: 1,
     },
+    {
+      id: 3,
+      name: 'Product 3',
+      image: 'pictures/cpu_test.png',
+      price: 500,
+      desc: 'Description 2',
+      quantity: 1,
+    },
+    {
+      id: 4,
+      name: 'Product 4',
+      image: 'pictures/cpu_test.png',
+      price: 1300,
+      desc: 'Description 2',
+      quantity: 1,
+    },
+    {
+      id: 5,
+      name: 'Product 5',
+      image: 'pictures/cpu_test.png',
+      price: 900,
+      desc: 'Description 2',
+      quantity: 1,
+    },
+    {
+      id: 6,
+      name: 'Product 6',
+      image: 'pictures/cpu_test.png',
+      price: 6200,
+      desc: 'Description 2',
+      quantity: 1,
+    },
   ];
 
   goToProduct(product: Product): void {

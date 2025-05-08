@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Injectable } from '@angular/core';
-import { Product } from '../shared/product';
+import { Product } from '../../shared/product';
 
 @Injectable({
   providedIn: 'root',
