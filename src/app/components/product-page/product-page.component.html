@@ -16,6 +16,10 @@
     </div>
 
     <div>
+      <p><strong>Ár:</strong>{{ product.price | currency }}</p>
+    </div>
+
+    <div>
       <button mat-button (click)="managementService.createProduct(product)">
         Kosárba
       </button>

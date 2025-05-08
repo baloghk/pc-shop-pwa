@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { Product } from '../../shared/product';
 import { MatButton } from '@angular/material/button';
 import { ManagementService } from '../../services/management.service';
+import { CurrencyPipe } from '../../shared/currency-pipe/currency.pipe';
 
 @Component({
   selector: 'app-product-page',
-  imports: [MatButton],
+  imports: [MatButton, CurrencyPipe],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.scss',
 })

@@ -6,35 +6,37 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { profileGuard } from './shared/profile-guard/profile.guard';
 
 export const routes: Routes = [
   {
     path: 'main',
-    component: MainPageComponent,
+    loadComponent: () => import('./components/main-page/main-page.component').then(c => c.MainPageComponent),
   },
   {
     path: 'login',
-    component: LoginPageComponent,
+    loadComponent: () => import('./components/login-page/login-page.component').then(c => c.LoginPageComponent),
   },
   {
     path: 'registration',
-    component: RegistrationPageComponent,
+    loadComponent: () => import('./components/registration-page/registration-page.component').then(c => c.RegistrationPageComponent),
   },
   {
     path: 'profile',
-    component: ProfilePageComponent,
+    loadComponent: () => import('./components/profile-page/profile-page.component').then(c => c.ProfilePageComponent),
+    canActivate: [profileGuard],
   },
   {
     path: 'cart',
-    component: CartPageComponent,
+    loadComponent: () => import('./components/cart-page/cart-page.component').then(c => c.CartPageComponent),
   },
   {
     path: 'product',
-    component: ProductComponent,
+    loadComponent: () => import('./components/product/product.component').then(c => c.ProductComponent),
   },
   {
     path: 'product-page',
-    component: ProductPageComponent,
+    loadComponent: () => import('./components/product-page/product-page.component').then(c => c.ProductPageComponent),
   },
   {
     path: '**',
