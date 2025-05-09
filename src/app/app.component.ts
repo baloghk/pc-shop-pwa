@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { MatButton } from '@angular/material/button';
 import { CurrencyService } from './services/currency/currency.service';
+import { MatFormField } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-root',

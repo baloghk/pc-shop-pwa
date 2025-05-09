@@ -2,7 +2,7 @@
   <div class="navbar-left">
     <div>
       <a routerLink="/" class="logo"
-        ><img src="pictures/logo.png" alt="iBit" />iBit</a
+        ><img class="logo-pic" src="pictures/logo.png" alt="iBit" />iBit</a
       >
     </div>
     <button class="menu_btn" mat-button (click)="toggleMenu()">
@@ -72,4 +72,60 @@
     </li>
   </ul>
 </nav>
+
 <router-outlet></router-outlet>
+
+<footer class="footer">
+  <div class="footer-upper">
+    <div class="footer-content">
+      <div class="newsletter-box">
+        <p class="newsletter-title">Légy naprakész!</p>
+        <hr />
+        <p>Iratkozz fel a hírlevelünkre</p>
+        <div class="newsletter-input-group">
+          <input
+            mat-form-field
+            type="text"
+            placeholder="E-mail cím"
+            class="newsletter-input"
+          />
+          <button mat-button class="newsletter-btn">
+            <p>Feliratkozom<mat-icon>mail</mat-icon></p>
+          </button>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-logo">
+          <a routerLink="/" class="logo">
+            <img class="logo-pic" src="pictures/logo.png" alt="iBit" />iBit
+          </a>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-column">
+            <p>Rendeléseim</p>
+            <p>Nyereményjáték</p>
+            <p>Szállítás</p>
+            <p>Cikkek</p>
+          </div>
+          <div class="footer-column">
+            <p>Ismertető</p>
+            <p>Adatvédelem</p>
+            <p>Garancia</p>
+            <p>Videók</p>
+          </div>
+          <div class="footer-column">
+            <p>Kapcsolat</p>
+            <p>Jogi nyilatkozat</p>
+            <p>Adattörlő kód</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-lower">
+    <div class="footer-bottom">
+      <p>© iBit Computer Kft. 2025 Minden jog fenntartva!</p>
+      <p>Kapcsolat: ibit&#64;ibit.hu</p>
+    </div>
+  </div>
+</footer>
