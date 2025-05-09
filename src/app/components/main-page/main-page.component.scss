@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   overflow-x: hidden;
-  min-height: 60vh;
+  min-height: 80vh;
 }
 
 .slider-container {
@@ -85,6 +85,119 @@
 }
 
 .dot.active {
-  background-color: blueviolet;
+  background-color: rgb(72, 22, 119);
   transform: scale(1.8);
+}
+
+.news-titles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  gap: 20px;
+  p {
+    font-size: 14px;
+  }
+  p:hover {
+    cursor: pointer;
+    padding-bottom: 3px;
+    border-bottom: 3px solid rgb(0, 217, 0);
+  }
+  h1 {
+    font-size: 30px;
+    margin-right: 30px;
+    font-weight: 900;
+  }
+}
+
+.news-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1500px;
+  margin-bottom: 30px;
+}
+
+.news-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  button {
+    background-color: white;
+    color: rgb(72, 22, 119);
+    border: lightgray solid 1px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+.news-container {
+  width: 100%;
+  max-width: 1500px;
+  margin-bottom: 20px;
+}
+
+.news-articles {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.big-news {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 400px;
+  width: 800px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  img {
+    max-height: 400px;
+    width: auto;
+    object-fit: cover;
+  }
+  div {
+    margin: 20px;
+  }
+}
+
+.big-news:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.small-news {
+  background-color: white;
+  height: 400px;
+  width: 200px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+}
+
+.smallest-news-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 3px;
+  max-height: 400px;
+}
+
+.smallest-news {
+  background-color: white;
+  height: 100px;
+  width: 200px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+}
+
+.selected-title {
+  padding-bottom: 3px;
+  border-bottom: 3px solid rgb(0, 217, 0);
 }

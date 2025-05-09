@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { NgStyle } from '@angular/common';
-import { NgFor } from '@angular/common';
-import { NgClass } from '@angular/common';
+import { NgStyle, NgFor, NgClass } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-main-page',
-  imports: [MatIconButton, MatIcon, NgStyle, NgFor, NgClass],
+  imports: [MatIconButton, MatIcon, NgStyle, NgFor, NgClass, MatButton],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })

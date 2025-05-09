@@ -5,6 +5,8 @@ import { NgFor, NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { MatIconButton } from '@angular/material/button';
+import { Router } from '@angular/router';
+import { Product } from '../../shared/product';
 
 @Component({
   selector: 'app-cart-page',
@@ -32,7 +34,10 @@ export class CartPageComponent {
     day: '2-digit',
   });
 
-  constructor(private managementService: ManagementService) {}
+  constructor(
+    public managementService: ManagementService,
+    private router: Router
+  ) {}
 
   async ngOnInit(): Promise<void> {
     await this.getCartItems();
@@ -80,5 +85,9 @@ export class CartPageComponent {
     this.products = [];
     this.totalPrice = 0;
     this.isCartEmpty = true;
+  }
+
+  goToProduct(product: Product): void {
+    this.router.navigate(['/product-page'], { state: { product } });
   }
 }
