@@ -1,1 +1,57 @@
-<p>cart-page works!</p>
+<div class="cart-page">
+  <div class="cart-content">
+    <div>
+      <div class="header">
+        <h1>KOSÁR</h1>
+        <button mat-button class="clear-button" (click)="clearCart()">
+          <p>Összes törlése <mat-icon>delete</mat-icon></p>
+        </button>
+      </div>
+      <hr />
+      <div class="cart-items">
+        <div *ngFor="let product of products" class="cart-item">
+          <img [src]="product.image" alt="{{ product.name }}" />
+          <div class="item-details">
+            <p class="product-name">{{ product.name }}</p>
+            <div class="dates">
+              <p class="pickup">Átvehető: {{ pickupDate }}</p>
+              <p class="shipping">Szállítható: {{ shippingDate }} -tól</p>
+            </div>
+            <div class="quantity">
+              <button mat-icon-button (click)="changeQuantity(product, -1)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span>{{ product.quantity }}</span>
+              <button mat-icon-button (click)="changeQuantity(product, +1)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <p class="product-price">{{ product.price | currency }}</p>
+          </div>
+        </div>
+        <div class="note">
+          <div><mat-icon>info</mat-icon></div>
+          <p>
+            A kosárba helyezés nem jelent foglalást, előfordulhat, hogy a
+            rendelés leadásakor már nem áll rendelkezésre a kosárba helyezett
+            termék.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <p>Áttekintés</p>
+      <hr />
+      <div class="summary-item">
+        <p>Összesen</p>
+        <p class="total-price">{{ totalPrice | currency }}</p>
+      </div>
+      <button mat-button class="checkout-button">
+        <span class="pay-text"
+          >Tovább a pénztárhoz <mat-icon>arrow_forward</mat-icon></span
+        >
+      </button>
+    </div>
+  </div>
+</div>

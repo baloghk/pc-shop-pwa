@@ -6,46 +6,40 @@ import { Product } from '../../shared/product';
 })
 export class ManagementService {
   private db!: IDBDatabase;
-  private readonly objectStoreName = 'products'; // Object store neve
-
+  private readonly objectStoreName = 'products';
+  private dbReady: Promise<void>;
   public products: Product[] = [];
 
   constructor() {
-    // Adatbázis létrehozása (ha még nem létezik) és megnyitása
     const request = indexedDB.open('products-db', 1);
+    this.dbReady = this.initDB();
 
-    // Error kezelése az adatbázis létrehozásakor/megnyitásakor
     request.onerror = (event: any) => {
       console.log('Database error:', event.target.error);
     };
 
-    // Ha a verziószám növekedett (vagy most hoztuk létre az adatbázist), itt kell frissíteni az object store sémát
     request.onupgradeneeded = (event: any) => {
       const db: IDBDatabase = event.target.result;
 
-      // Object store létrehozása
       const objectStore = db.createObjectStore(this.objectStoreName, {
         keyPath: 'id',
         autoIncrement: true,
       });
 
-      // Adatbázis index létrehozása a hatékonyabb működés érdekében
       objectStore.createIndex('nameIndex', 'name', { unique: false });
     };
 
-    // Adatbázis sikeres létrehozásának&megnyitásának kezelése
     request.onsuccess = (event: any) => {
       this.db = event.target.result;
       this.loadProducts();
     };
   }
 
+  // Termék hozzáadása vagy mennyiségének frissítése
   public createProduct(product: Product): void {
-    // Először ellenőrizzük, hogy létezik-e már a termék (pl. név alapján)
     const transaction = this.db.transaction(this.objectStoreName, 'readwrite');
     const objectStore = transaction.objectStore(this.objectStoreName);
 
-    // Index alapján keresünk (pl. név index)
     const index = objectStore.index('nameIndex');
     const request = index.get(product.name);
 
@@ -53,16 +47,13 @@ export class ManagementService {
       const existingProduct = event.target.result;
 
       if (existingProduct) {
-        // Ha létezik, növeljük a quantity értéket
         existingProduct.quantity = (existingProduct.quantity || 0) + 1;
 
-        // Frissítjük az adatbázisban
         const updateRequest = objectStore.put(existingProduct);
 
         updateRequest.onsuccess = () => {
           console.log('Termék mennyisége frissítve:', existingProduct);
 
-          // Memóriában is frissítjük a terméket
           const index = this.products.findIndex(
             (p) => p.id === existingProduct.id
           );
@@ -75,14 +66,13 @@ export class ManagementService {
           console.log('Hiba a termék frissítésekor:', event.target.error);
         };
       } else {
-        // Ha nem létezik, hozzáadjuk az új terméket
         const addRequest = objectStore.add(product);
 
         addRequest.onsuccess = (event: any) => {
           const newProduct: Product = {
             ...product,
-            id: event.target.result, // Új ID mentése
-            quantity: 1, // Mennyiség kezdeti értéke
+            id: event.target.result,
+            quantity: 1,
           };
           this.products.push(newProduct);
           console.log('Új termék hozzáadva:', newProduct);
@@ -99,21 +89,104 @@ export class ManagementService {
     };
   }
 
-  private loadProducts(): void {
-    // Object store tranzakció létrehozása és object store lekérése
-    const objectStore = this.db
-      .transaction(this.objectStoreName)
-      .objectStore(this.objectStoreName);
+  // Adatbázis inicializálása
+  private initDB(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open('products-db', 1);
 
-    // Adatbázisban tárolt objektumok bejárása kurzor segítségével
-    // Itt lehet opcionálisan további feltételeket definiálni (az SQL "WHERE"-hez hasonlóan)
-    objectStore.openCursor().onsuccess = (event: any) => {
-      const cursor = event.target.result;
+      request.onerror = (event: any) => {
+        console.log('Adatbázis hiba:', event.target.error);
+        reject(event.target.error);
+      };
 
-      if (cursor) {
-        this.products.push(cursor.value);
+      request.onupgradeneeded = (event: any) => {
+        const db: IDBDatabase = event.target.result;
+        const objectStore = db.createObjectStore(this.objectStoreName, {
+          keyPath: 'id',
+          autoIncrement: true,
+        });
+        objectStore.createIndex('nameIndex', 'name', { unique: false });
+      };
 
-        cursor.continue(); // Következő elemre lépés
+      request.onsuccess = (event: any) => {
+        this.db = event.target.result;
+        resolve();
+        console.log('Adatbázis inicializálva.');
+      };
+    });
+  }
+
+  // Termékek betöltése
+  public async loadProducts(): Promise<Product[]> {
+    await this.dbReady;
+    return new Promise((resolve, reject) => {
+      const products: Product[] = [];
+      const transaction = this.db.transaction(this.objectStoreName);
+      const objectStore = transaction.objectStore(this.objectStoreName);
+
+      objectStore.openCursor().onsuccess = (event: any) => {
+        const cursor = event.target.result;
+        if (cursor) {
+          products.push(cursor.value);
+          cursor.continue();
+        } else {
+          resolve(products);
+        }
+      };
+
+      objectStore.openCursor().onerror = (event: any) => {
+        reject('Error loading products: ' + event.target.error);
+      };
+    });
+  }
+
+  // Termék eltávolítása
+  public removeProduct(id: number): void {
+    const transaction = this.db.transaction(this.objectStoreName, 'readwrite');
+    const objectStore = transaction.objectStore(this.objectStoreName);
+
+    const request = objectStore.delete(id);
+
+    request.onsuccess = () => {
+      console.log('Termék törölve:', id);
+      this.products = this.products.filter((product) => product.id !== id);
+    };
+
+    request.onerror = (event: any) => {
+      console.log('Hiba a termék törlésekor:', event.target.error);
+    };
+  }
+
+  // Kosár kiürítése
+  public clearCart(): void {
+    const transaction = this.db.transaction(this.objectStoreName, 'readwrite');
+    const objectStore = transaction.objectStore(this.objectStoreName);
+
+    const request = objectStore.clear();
+
+    request.onsuccess = () => {
+      console.log('Kosár kiürítve');
+      this.products = [];
+    };
+
+    request.onerror = (event: any) => {
+      console.log('Hiba a kosár kiürítésekor:', event.target.error);
+    };
+  }
+
+  // Kosár mennyiségének frissítése
+  public updateProductQuantity(id: number, quantity: number): void {
+    const transaction = this.db.transaction(this.objectStoreName, 'readwrite');
+    const objectStore = transaction.objectStore(this.objectStoreName);
+    const request = objectStore.get(id);
+
+    request.onsuccess = (event: any) => {
+      const product = event.target.result;
+      if (product) {
+        product.quantity = quantity;
+        objectStore.put(product).onsuccess = () => {
+          console.log('Termék mennyisége frissítve:', id, quantity);
+        };
       }
     };
   }
