@@ -33,6 +33,11 @@ html {
   align-items: center;
   flex-grow: 1;
   gap: 20px;
+  img {
+    height: 29px;
+    margin-right: 3px;
+    padding-bottom: 1px;
+  }
 }
 
 .logo {
@@ -40,6 +45,9 @@ html {
   font-weight: bold;
   color: white;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 20px;
 }
 

@@ -1,26 +1,65 @@
 import { Component } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { NgStyle } from '@angular/common';
+import { NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-main-page',
-  imports: [MatIconButton, MatIcon],
+  imports: [MatIconButton, MatIcon, NgStyle, NgFor, NgClass],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
 export class MainPageComponent {
   currentIndex = 0;
 
+  autoplayInterval: any;
+  slideIntervalTime = 5000;
+
   images = [
     'pictures/slide_1.jpg',
     'pictures/slide_2.jpg',
-    'pictures/slide_1.jpg',
+    'pictures/slide_3.jpg',
   ];
 
-  nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % 3;
+  ngOnInit() {
+    this.startAutoplay();
   }
+
+  ngOnDestroy() {
+    this.stopAutoplay();
+  }
+
+  startAutoplay() {
+    this.autoplayInterval = setInterval(() => {
+      this.nextSlide();
+    }, this.slideIntervalTime);
+  }
+
+  stopAutoplay() {
+    if (this.autoplayInterval) {
+      clearInterval(this.autoplayInterval);
+    }
+  }
+
+  resetAutoplayTimer() {
+    this.stopAutoplay();
+    this.startAutoplay();
+  }
+
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }
+
   prevSlide() {
-    this.currentIndex = (this.currentIndex - 1 + 3) % 3;
+    this.currentIndex =
+      (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.resetAutoplayTimer();
+  }
+
+  goToSlide(index: number) {
+    this.currentIndex = index;
+    this.resetAutoplayTimer();
   }
 }

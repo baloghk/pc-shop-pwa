@@ -1,11 +1,27 @@
 <div class="main-page">
-  <div>
-    <img src="{{ images[currentIndex] }}" alt="doom" />
+  <div class="slider-container">
+    <div
+      class="slider"
+      [ngStyle]="{ transform: 'translateX(' + -currentIndex * 100 + '%)' }"
+    >
+      <div class="slide" *ngFor="let image of images">
+        <img [src]="image" alt="slide" />
+      </div>
+    </div>
     <button class="left_btn" mat-icon-button (click)="prevSlide()">
       <mat-icon>chevron_left</mat-icon>
     </button>
     <button class="right_btn" mat-icon-button (click)="nextSlide()">
       <mat-icon>chevron_right</mat-icon>
     </button>
+
+    <div class="slider-dots">
+      <button
+        class="dot"
+        *ngFor="let image of images; let i = index"
+        [ngClass]="{ active: i === currentIndex }"
+        (click)="goToSlide(i)"
+      ></button>
+    </div>
   </div>
 </div>

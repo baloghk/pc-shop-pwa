@@ -1,6 +1,10 @@
 <nav class="navbar" [class.hidden]="!navbarVisible">
   <div class="navbar-left">
-    <div><a routerLink="/" class="logo">iBit</a></div>
+    <div>
+      <a routerLink="/" class="logo"
+        ><img src="pictures/logo.png" alt="iBit" />iBit</a
+      >
+    </div>
     <button class="menu_btn" mat-button (click)="toggleMenu()">
       Menü <mat-icon>{{ isMenuOpen ? "expand_less" : "expand_more" }}</mat-icon>
     </button>
