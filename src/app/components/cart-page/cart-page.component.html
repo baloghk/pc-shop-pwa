@@ -8,6 +8,13 @@
         </button>
       </div>
       <hr />
+      <div class="empty-message" *ngIf="isCartEmpty">
+        <p>Üres a kosarad!</p>
+        <p>
+          Nem muszáj hogy így legyen. Nézz körül a Shopban rengeteg jó
+          ajánlatért!
+        </p>
+      </div>
       <div class="cart-items">
         <div *ngFor="let product of products" class="cart-item">
           <img [src]="product.image" alt="{{ product.name }}" />
@@ -15,13 +22,13 @@
             <p class="product-name">{{ product.name }}</p>
             <div class="dates">
               <p class="pickup">Átvehető: {{ pickupDate }}</p>
-              <p class="shipping">Szállítható: {{ shippingDate }} -tól</p>
+              <p class="shipping">Szállítható: {{ shippingDate }}-tól</p>
             </div>
             <div class="quantity">
               <button mat-icon-button (click)="changeQuantity(product, -1)">
                 <mat-icon>remove</mat-icon>
               </button>
-              <span>{{ product.quantity }}</span>
+              <p>{{ product.quantity }}</p>
               <button mat-icon-button (click)="changeQuantity(product, +1)">
                 <mat-icon>add</mat-icon>
               </button>

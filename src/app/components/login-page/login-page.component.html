@@ -1,16 +1,22 @@
-<div class="login-form">
+<div class="login-page">
+  <div class="login-form">
     <h3>BEJELENTKEZÉS</h3>
-        <form>
-            <mat-form-field appearance="outline">
-                <mat-label>Felhasználónév</mat-label>
-                <input type="text" matInput formControlName="username">
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="outline">
-                <mat-label>Jelszó</mat-label>
-                <input type="password" matInput formControlName="password">
-            </mat-form-field>
-            <button type="submit" mat-button> <mat-icon style="color: white">person</mat-icon>Bejelentkezek</button>
-        </form>
-        <button class="reg_btn" mat-button routerLink="/registration"> <mat-icon style="color: white">person_add</mat-icon>Regisztráció</button>
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>Felhasználónév</mat-label>
+        <input type="text" matInput formControlName="username" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>Jelszó</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field>
+      <button type="submit" mat-button>
+        <mat-icon style="color: white">person</mat-icon>Bejelentkezek
+      </button>
+    </form>
+    <button class="reg_btn" mat-button routerLink="/registration">
+      <mat-icon style="color: white">person_add</mat-icon>Regisztráció
+    </button>
+  </div>
 </div>

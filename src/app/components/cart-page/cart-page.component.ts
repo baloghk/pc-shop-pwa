@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { ManagementService } from '../../services/management/management.service';
 import { CurrencyPipe } from '../../shared/currency-pipe/currency.pipe';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-cart-page',
-  imports: [CurrencyPipe, NgFor, MatIcon, MatButton, MatIconButton],
+  imports: [CurrencyPipe, NgFor, NgIf, MatIcon, MatButton, MatIconButton],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.scss',
 })
 export class CartPageComponent {
   products: any[] = [];
   totalPrice: number = 0;
+  isCartEmpty = false;
 
   pickupDate = new Date(
     new Date().setDate(new Date().getDate() + 3)
@@ -45,6 +46,11 @@ export class CartPageComponent {
     try {
       this.products = await this.managementService.loadProducts();
       this.totalPriceCalculation();
+      if (this.products.length > 0) {
+        this.isCartEmpty = false;
+      } else {
+        this.isCartEmpty = true;
+      }
     } catch (error) {
       console.error('Error loading cart items:', error);
     }
@@ -73,5 +79,6 @@ export class CartPageComponent {
     console.log('Kosár kiürítve');
     this.products = [];
     this.totalPrice = 0;
+    this.isCartEmpty = true;
   }
 }

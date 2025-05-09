@@ -1,32 +1,38 @@
-<div class="registration-form">
-        <h3>REGISZTRÁCIÓ</h3>
-            <form>
-                <div class="name-fields">
-                    <mat-form-field appearance="outline">
-                      <mat-label>Vezetéknév</mat-label>
-                      <input type="text" matInput formControlName="forename">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Keresztnév</mat-label>
-                      <input type="text" matInput formControlName="surname">
-                    </mat-form-field>
-                  </div> 
-                <mat-form-field appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input type="email" matInput formControlName="email">
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="outline">
-                    <mat-label>Felhasználónév</mat-label>
-                    <input type="text" matInput formControlName="username">
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="outline">
-                    <mat-label>Jelszó</mat-label>
-                    <input type="password" matInput formControlName="password">
-                </mat-form-field>
-                <button type="submit" mat-button> <mat-icon style="color: white">person_add</mat-icon> Regisztrálok</button>
-            </form>
-            <p>A regisztrációval elfogadom a Felhasználási feltételeket és az Adatvédelmi nyilatkozatot.</p>
+<div class="registration-page">
+  <div class="registration-form">
+    <h3>REGISZTRÁCIÓ</h3>
+    <form>
+      <div class="name-fields">
+        <mat-form-field appearance="outline">
+          <mat-label>Vezetéknév</mat-label>
+          <input type="text" matInput formControlName="forename" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Keresztnév</mat-label>
+          <input type="text" matInput formControlName="surname" />
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>Felhasználónév</mat-label>
+        <input type="text" matInput formControlName="username" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>Jelszó</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field>
+      <button type="submit" mat-button>
+        <mat-icon style="color: white">person_add</mat-icon> Regisztrálok
+      </button>
+    </form>
+    <p>
+      A regisztrációval elfogadom a Felhasználási feltételeket és az Adatvédelmi
+      nyilatkozatot.
+    </p>
+  </div>
 </div>
-

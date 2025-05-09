@@ -4,6 +4,7 @@
   gap: 2rem;
   padding-top: 30px;
   align-items: center;
+  min-height: 60vh;
 }
 .header {
   display: flex;
@@ -22,6 +23,12 @@
   border-radius: 5px;
   p {
     display: flex;
+    align-items: center;
+  }
+  mat-icon {
+    font-size: medium;
+    display: flex;
+    justify-content: center;
     align-items: center;
   }
 }
@@ -46,6 +53,18 @@
   border-radius: 8px;
   height: 100px;
   position: relative;
+  mat-icon {
+    color: black;
+    font-size: medium;
+  }
+}
+
+.empty-message {
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin: 20px 0;
+  width: 800px;
 }
 
 .item-details {
@@ -107,9 +126,9 @@
   align-items: center;
   mat-icon {
     font-size: 15px;
-    align-items: center;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 }
 
@@ -147,5 +166,6 @@ img {
 .quantity {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: end;
+  height: 45px;
 }
