@@ -6,10 +6,18 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { MatButton } from '@angular/material/button';
 import { CurrencyService } from './services/currency/currency.service';
+import { CartAlertComponent } from './components/cart-alert/cart-alert.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, MatIcon, MatIconButton, MatButton],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    MatIcon,
+    MatIconButton,
+    MatButton,
+    CartAlertComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

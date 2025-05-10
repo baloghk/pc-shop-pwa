@@ -190,4 +190,12 @@ export class ManagementService {
       }
     };
   }
+
+  // Kosárban lévő termékek számának lekérdezése
+  public getProductCount(): number {
+    return this.products.reduce(
+      (sum, product) => sum + (product.quantity || 0),
+      0
+    );
+  }
 }
