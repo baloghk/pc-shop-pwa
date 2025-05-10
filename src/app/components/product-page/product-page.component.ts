@@ -15,6 +15,24 @@ import { NgFor } from '@angular/common';
 })
 export class ProductPageComponent {
   product: Product;
+
+  pickupDate = new Date(
+    new Date().setDate(new Date().getDate() + 3)
+  ).toLocaleDateString('hu-HU', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'long',
+  });
+  shippingDate = new Date(
+    new Date().setDate(new Date().getDate() + 5)
+  ).toLocaleDateString('hu-HU', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'long',
+  });
+
   constructor(
     private router: Router,
     public managementService: ManagementService
