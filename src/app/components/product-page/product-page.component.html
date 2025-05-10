@@ -1,28 +1,56 @@
 <div class="product-page">
-  <h1>{{ product.name }}</h1>
-  <p>Cikkszám: {{ product.id }}</p>
-
-  <div>
-    <div>
+  <div class="link-tree">
+    <a href="">iBit</a>
+    <p class="not-clickable">/</p>
+    <a href="">Shop</a>
+    <p class="not-clickable">/</p>
+    <a href="">{{ product.category }}</a>
+    <p class="not-clickable">/</p>
+    <a href="">{{ product.subcategory }}</a>
+    <p class="not-clickable">/</p>
+    <a href="">{{ product.brand }}</a>
+    <p class="not-clickable">/</p>
+    <p class="not-clickable">{{ product.name }}</p>
+  </div>
+  <div class="product-card">
+    <div class="product-img">
       <img [src]="product.image" alt="{{ product.name }}" />
     </div>
-
-    <div>
-      <p><strong>Leírás:</strong> {{ product.desc }}</p>
-    </div>
-
-    <div>
-      <p><strong>Jótállás:</strong> 2 év</p>
-    </div>
-
-    <div>
-      <p><strong>Ár:</strong>{{ product.price | currency }}</p>
-    </div>
-
-    <div>
-      <button mat-button (click)="managementService.createProduct(product)">
-        Kosárba
-      </button>
+    <div class="product-details">
+      <div class="product-details-header">
+        <div>
+          <h1 class="product-name">{{ product.name }}</h1>
+          <p class="product-id">Cikkszám: {{ product.id }}</p>
+          <p class="product-reviews">
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+              <mat-icon class="star-icon">star</mat-icon>
+            </ng-container>
+            <span>(0 értékelés)</span>
+          </p>
+          <p class="product-description">{{ product.desc }}</p>
+        </div>
+        <div>
+          <p class="product-price">
+            <strong>{{ product.price | currency }}</strong>
+          </p>
+        </div>
+        <div class="cart-button">
+          <button mat-button (click)="managementService.createProduct(product)">
+            <p>HOZZÁADOM A KOSÁRHOZ <mat-icon>shopping_cart</mat-icon></p>
+          </button>
+        </div>
+      </div>
+      <div class="product-details-shipping">
+        <p><strong>Mai rendelés esetén</strong></p>
+        <p>Átvétel boltban:</p>
+        <p>Házhozszállítás:</p>
+      </div>
+      <div class="product-details-warranty">
+        <p><strong>Jótállás</strong></p>
+        <div class="warranty-box"><p>2 év gyári jótállással</p></div>
+      </div>
     </div>
   </div>
+
+  <div></div>
 </div>

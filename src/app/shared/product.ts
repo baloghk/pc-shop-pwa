@@ -1,4 +1,7 @@
 export interface Product {
+  category: string;
+  subcategory: string;
+  brand: string;
   name: string;
   price: number;
   desc: string;

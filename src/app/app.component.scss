@@ -67,7 +67,7 @@ html {
 .menu {
   position: fixed;
   top: 70px;
-  margin-left: 150px;
+  margin-left: 200px;
   width: 500px;
   background-color: rgb(72, 22, 119);
   z-index: 999;
@@ -118,7 +118,7 @@ body.menu-open {
 .currency-menu {
   position: fixed;
   top: 70px;
-  margin-left: 800px;
+  margin-left: 1460px;
   background-color: rgb(72, 22, 119);
   z-index: 999;
   padding: 20px;
@@ -167,8 +167,7 @@ body.menu-open {
   margin-right: 10px;
   margin-left: 10px;
   min-width: 200px;
-  max-width: 500px;
-  flex-grow: 1;
+  max-width: 1100px;
 }
 
 .search-bar-container input {
@@ -177,7 +176,7 @@ body.menu-open {
   border: none;
   background: inherit;
   padding: 0 10px;
-  width: 40vw;
+  width: 60vw;
   min-width: 150px;
   height: 80%;
 }
@@ -238,7 +237,7 @@ mat-icon {
 main,
 router-outlet {
   display: block;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .overlay {
@@ -312,7 +311,7 @@ router-outlet {
 }
 
 .newsletter-btn {
-  background-color: green;
+  background-color: rgb(0, 166, 62);
   color: white !important;
   border: none;
   border-radius: 4px;

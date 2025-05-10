@@ -4,10 +4,12 @@ import { Product } from '../../shared/product';
 import { MatButton } from '@angular/material/button';
 import { ManagementService } from '../../services/management/management.service';
 import { CurrencyPipe } from '../../shared/currency-pipe/currency.pipe';
+import { MatIcon } from '@angular/material/icon';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-product-page',
-  imports: [MatButton, CurrencyPipe],
+  imports: [MatButton, CurrencyPipe, MatIcon, NgFor],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.scss',
 })
