@@ -125,7 +125,7 @@ body.menu-open {
 .currency-menu {
   position: fixed;
   top: 70px;
-  margin-left: 1460px;
+  margin-left: 1360px;
   background-color: rgb(72, 22, 119);
   z-index: 999;
   padding: 20px;
@@ -174,7 +174,7 @@ body.menu-open {
   margin-right: 10px;
   margin-left: 10px;
   max-width: 1100px;
-  width: 30vw;
+  width: 1000px;
 }
 
 .search-bar-container input {
@@ -395,7 +395,25 @@ router-outlet {
   font-weight: 500;
 }
 
+@media (max-width: 1920px) {
+  .currency-menu {
+    margin-left: 810px;
+  }
+
+  .search-bar-container {
+    width: 450px;
+  }
+}
+
 @media (max-width: 1200px) {
+  .menu {
+    margin-left: 150px;
+  }
+
+  .currency-menu {
+    margin-left: 400px;
+  }
+
   .search-bar-container {
     width: 130px;
     display: flex;
