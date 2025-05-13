@@ -64,3 +64,14 @@ button {
 mat-label {
   color: black;
 }
+
+@media (max-width: 768px) {
+  .login-page {
+    margin-top: 140px;
+    width: 100%;
+  }
+
+  .login-form {
+    width: 70%;
+  }
+}

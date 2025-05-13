@@ -102,3 +102,22 @@
   background-color: rgb(25, 21, 71);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
+@media (max-width: 1200px) {
+  .promo-header img {
+    height: 55px;
+  }
+}
+
+@media (max-width: 768px) {
+  .promo-header {
+    display: none;
+  }
+
+  .products-page {
+    margin-top: 130px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}

@@ -1,12 +1,13 @@
 <nav class="navbar" [class.hidden]="!navbarVisible">
   <div class="navbar-left">
-    <div>
-      <a routerLink="/" class="logo"
-        ><img class="logo-pic" src="pictures/logo.png" alt="iBit" />iBit</a
-      >
-    </div>
+    <a routerLink="/" class="logo"
+      ><img class="logo-pic" src="pictures/logo.png" alt="iBit" />iBit</a
+    >
     <button class="menu_btn" mat-button (click)="toggleMenu()">
-      Menü <mat-icon>{{ isMenuOpen ? "expand_less" : "expand_more" }}</mat-icon>
+      <ng-container *ngIf="isMobile; else menuLabel">
+        <img src="assets/icons/menu.svg" alt="Menu" width="30" height="30" />
+      </ng-container>
+      <ng-template #menuLabel> Menü</ng-template>
     </button>
     <div class="search-bar-container">
       <button mat-icon-button>
@@ -15,18 +16,41 @@
       <input type="text" placeholder="Keresés..." class="search-input" />
     </div>
     <button class="currency" mat-button (click)="toggleCurrencyMenu()">
-      {{ selectedCurrency }}
-      <mat-icon>{{
-        isCurrencyMenuOpen ? "expand_less" : "expand_more"
-      }}</mat-icon>
+      <ng-container
+        class="curr_menu_btn_content"
+        *ngIf="isMobile; else currencyLabel"
+      >
+        <img
+          src="assets/icons/currency.svg"
+          alt="Currency"
+          width="30"
+          height="30"
+        />
+      </ng-container>
+      <ng-template #currencyLabel>{{ selectedCurrency }}</ng-template>
     </button>
   </div>
-
   <ul class="navbar-right">
-    <li><a routerLink="/login">Bejelentkezés</a></li>
-    <li><a routerLink="/profile">Profil</a></li>
     <li>
-      <a routerLink="/cart"><mat-icon class="cart">shopping_cart</mat-icon></a>
+      <a routerLink="/login"
+        ><ng-container *ngIf="isMobile; else loginLabel">
+          <mat-icon>login</mat-icon>
+        </ng-container>
+        <ng-template #loginLabel> Bejelentkezés</ng-template></a
+      >
+    </li>
+    <li>
+      <a routerLink="/profile"
+        ><ng-container *ngIf="isMobile; else profileLabel">
+          <mat-icon>account_circle</mat-icon>
+        </ng-container>
+        <ng-template #profileLabel>Profil</ng-template></a
+      >
+    </li>
+    <li>
+      <a routerLink="/cart">
+        <mat-icon class="cart">shopping_cart</mat-icon>
+      </a>
       <app-cart-alert></app-cart-alert>
     </li>
   </ul>

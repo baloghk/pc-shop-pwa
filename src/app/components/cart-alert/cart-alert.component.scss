@@ -1,13 +1,19 @@
 .cart-alert {
   position: absolute;
-  top: 35px;
+  top: 7px;
   background-color: red;
   color: white;
-  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   height: 20px;
   width: 20px;
+  p {
+    position: absolute;
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    top: 1px;
+  }
 }

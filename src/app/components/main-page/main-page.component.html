@@ -30,12 +30,13 @@
     <div class="news-header">
       <div class="news-titles">
         <h1>AJÁNLÓ</h1>
-        <p class="selected-title"><strong>Címlap</strong></p>
-        <p>IT Világ</p>
-        <p>Hardver</p>
-        <p>Tudomány</p>
-        <p>Játék</p>
-        <p>Film + TV</p>
+        <div class="news-smaller-titles">
+          <p class="selected-title"><strong>Címlap</strong></p>
+          <p>IT Világ</p>
+          <p>Hardver</p>
+          <p>Tudomány</p>
+          <p>Játék</p>
+        </div>
       </div>
       <div class="news-buttons">
         <button mat-button>Gépösszerakó</button>
@@ -46,7 +47,7 @@
     <div class="news-articles">
       <div class="big-news">
         <img src="pictures/news1.jpg" alt="news1" />
-        <div>
+        <div class="news-text">
           <p class="news-details-type">IT VILÁG</p>
           <h4>
             Botrány a Xiaomi sportautója körül, limitálta a cég a SU7 Ultra
@@ -60,7 +61,7 @@
       </div>
       <div class="small-news">
         <img src="pictures/news2.jpg" alt="news2" />
-        <div>
+        <div class="news-text">
           <p class="news-details-type">HARDVER</p>
           <h4>
             Az AMD vezetője szerint egyensúlyt kéne találni az
@@ -74,7 +75,7 @@
       </div>
       <div class="small-news">
         <img src="pictures/news3.jpg" alt="news3" />
-        <div>
+        <div class="news-text">
           <p class="news-details-type">HARDVER</p>
           <h4>
             Fura jelenséget fedeztek fel az Arrow Lake-S processzoroknál: A PCI

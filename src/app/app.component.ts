@@ -7,6 +7,7 @@ import { MatIconButton } from '@angular/material/button';
 import { MatButton } from '@angular/material/button';
 import { CurrencyService } from './services/currency/currency.service';
 import { CartAlertComponent } from './components/cart-alert/cart-alert.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import { CartAlertComponent } from './components/cart-alert/cart-alert.component
     MatIconButton,
     MatButton,
     CartAlertComponent,
+    NgIf,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -35,6 +37,21 @@ export class AppComponent {
 
   currencyMenuVisible = false;
   isCurrencyMenuOpen = false;
+
+  isMobile = false;
+
+  ngOnInit() {
+    this.checkIfMobile();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkIfMobile();
+  }
+
+  private checkIfMobile() {
+    this.isMobile = window.innerWidth <= 768;
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
