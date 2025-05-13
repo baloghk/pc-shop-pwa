@@ -49,4 +49,8 @@ export class ProductPageComponent {
       console.error('Product not found in state');
     }
   }
+
+  alert() {
+    alert('A termék a kosárba került!');
+  }
 }
