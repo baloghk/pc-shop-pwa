@@ -1,16 +1,14 @@
 .products-page {
   min-height: 60vh;
-  margin-top: 30px;
+  margin: 0 150px;
 }
 
 .products-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  grid-template-columns: repeat(auto-fill, 275px);
   gap: 1rem;
-  background-color: #f5f5f5;
   padding: 1rem;
-  margin-left: 200px;
-  margin-right: 200px;
+  justify-content: center;
 }
 
 .product-card {
@@ -29,6 +27,7 @@
   transition: all 0.3s ease;
   font-family: "Raleway", sans-serif !important;
   margin-right: 0px;
+  flex: 0 0 auto;
 }
 
 .product-card .product-name {
