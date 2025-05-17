@@ -2,14 +2,6 @@
   margin-top: 120px;
 }
 
-.changepw_btn {
-  background-color: blueviolet;
-  color: white !important;
-  border-radius: 5px;
-  height: 35px;
-  padding: 20px 40px;
-}
-
 .header {
   display: flex;
   flex-direction: row;
@@ -44,6 +36,23 @@
   box-shadow: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.1);
 }
 
+.changepw-btn {
+  background-color: blueviolet;
+  color: white !important;
+  border-radius: 5px;
+  height: 35px;
+  padding: 20px 40px;
+}
+
+.logout-btn {
+  background-color: red;
+  color: white !important;
+  border-radius: 5px;
+  height: 35px;
+  padding: 20px 40px;
+  margin-top: 10px;
+}
+
 @media (max-width: 768px) {
   .profile-page {
     margin-top: 140px;
@@ -70,6 +79,15 @@
   }
 
   button {
+    width: 100%;
+  }
+
+  .logout-btn {
+    background-color: red;
+    color: white !important;
+    border-radius: 5px;
+    height: 35px;
+    padding: 20px 40px;
     width: 100%;
   }
 }

@@ -2,7 +2,7 @@
   <div class="profile-data">
     <div class="header">
       <h2>SZEMÉLYES ADATOK</h2>
-      <button mat-button class="changepw_btn">Jelszó módosítása</button>
+      <button mat-button class="changepw-btn">Jelszó módosítása</button>
     </div>
     <div class="profile-personal-data">
       <h4>ADATAID</h4>
@@ -17,6 +17,11 @@
       <div>
         <p>Még nincsenek mentett címeid</p>
       </div>
+    </div>
+    <div>
+      <button class="logout-btn" mat-button (click)="onLogout()">
+        Kijelentkezés
+      </button>
     </div>
   </div>
 </div>
