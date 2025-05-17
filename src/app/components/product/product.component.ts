@@ -8,6 +8,7 @@ import { Product } from '../../shared/product';
 import { NgFor } from '@angular/common';
 import { CurrencyPipe } from '../../shared/currency-pipe/currency.pipe';
 import { Router } from '@angular/router';
+import { ProductsFirebaseService } from '../../services/firebase/products/products-firebase.service';
 
 @Component({
   selector: 'app-product',
@@ -25,9 +26,26 @@ import { Router } from '@angular/router';
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private productsService: ProductsFirebaseService
+  ) {}
 
-  Products: Product[] = [
+  Products: any[] = [];
+
+  ngOnInit() {
+    this.productsService.getProductsCollection().subscribe(
+      (data) => {
+        this.Products = data;
+        console.log('Termékek:', this.Products);
+      },
+      (error) => {
+        console.error('Hiba a termékek betöltésekor:', error);
+      }
+    );
+  }
+
+  #Products: Product[] = [
     {
       id: 1,
       name: 'Product 1',
