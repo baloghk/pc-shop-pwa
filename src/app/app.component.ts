@@ -8,6 +8,7 @@ import { MatButton } from '@angular/material/button';
 import { CurrencyService } from './services/currency/currency.service';
 import { CartAlertComponent } from './components/cart-alert/cart-alert.component';
 import { NgIf } from '@angular/common';
+import { AuthFirebaseService } from './services/firebase/authorization/auth-firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,10 @@ import { NgIf } from '@angular/common';
 })
 export class AppComponent {
   title = 'pc-shop-pwa';
-  constructor(private currencyService: CurrencyService) {}
+  constructor(
+    private currencyService: CurrencyService,
+    private authService: AuthFirebaseService
+  ) {}
 
   selectedCurrency = 'HUF';
 
@@ -40,8 +44,13 @@ export class AppComponent {
 
   isMobile = false;
 
+  isLoggedIn = false;
+
   ngOnInit() {
     this.checkIfMobile();
+    this.authService.isLoggedIn().subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 
   @HostListener('window:resize', ['$event'])

@@ -16,11 +16,11 @@ export class ProfilePageComponent implements OnInit {
   constructor(private authService: AuthFirebaseService) {}
 
   ngOnInit() {
-    this.authService.getUserData().subscribe((user) => {
+    this.authService.getUserProfile().subscribe((user) => {
       if (user) {
-        this.username = user.displayName || 'N/A';
+        this.name = user.forename + ' ' + user.surname || 'N/A';
         this.email = user.email || 'N/A';
-        this.name = user.displayName || 'N/A';
+        this.username = user.username || 'N/A';
       }
     });
   }

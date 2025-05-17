@@ -31,7 +31,7 @@
     </button>
   </div>
   <ul class="navbar-right">
-    <li>
+    <li *ngIf="!isLoggedIn">
       <a routerLink="/login"
         ><ng-container *ngIf="isMobile; else loginLabel">
           <mat-icon>login</mat-icon>

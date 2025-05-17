@@ -29,15 +29,15 @@ export class LoginPageComponent {
     private authService: AuthFirebaseService
   ) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onLogin() {
-    const { username, password } = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
     this.authService
-      .login(username, password)
+      .login(email, password)
       .then(() => alert('Sikeres bejelentkezés!'))
       .catch((error) => alert(`Hiba: ${error.message}`));
   }

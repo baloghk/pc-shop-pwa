@@ -1,7 +1,7 @@
 <div class="registration-page">
   <div class="registration-form">
     <h3>REGISZTRÁCIÓ</h3>
-    <form>
+    <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
       <div class="name-fields">
         <mat-form-field appearance="outline">
           <mat-label>Vezetéknév</mat-label>
@@ -26,7 +26,7 @@
         <mat-label>Jelszó</mat-label>
         <input type="password" matInput formControlName="password" />
       </mat-form-field>
-      <button type="submit" mat-button>
+      <button type="submit" mat-button [disabled]="!registrationForm.valid">
         <mat-icon style="color: white">person_add</mat-icon> Regisztrálok
       </button>
     </form>
