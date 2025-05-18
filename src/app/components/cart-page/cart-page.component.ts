@@ -90,4 +90,10 @@ export class CartPageComponent {
   goToProduct(product: Product): void {
     this.router.navigate(['/product-page'], { state: { product } });
   }
+
+  goToOrder() {
+    this.router.navigate(['/order'], {
+      state: { products: this.products, totalPrice: this.totalPrice },
+    });
+  }
 }

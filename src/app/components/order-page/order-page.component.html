@@ -1,0 +1,106 @@
+<div class="order-page">
+  <div class="order-form">
+    <form [formGroup]="orderForm" (ngSubmit)="onOrder()">
+      <h3>Vásárlói adatok</h3>
+      <div class="name-fields">
+        <mat-form-field appearance="outline">
+          <mat-label>Vezetéknév</mat-label>
+          <input type="text" matInput formControlName="forename" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Keresztnév</mat-label>
+          <input type="text" matInput formControlName="surname" />
+        </mat-form-field>
+      </div>
+      <h3>Számlázási adatok</h3>
+      <div class="billing-fields">
+        <mat-form-field appearance="outline">
+          <mat-label>Ország</mat-label>
+          <input type="text" matInput formControlName="country" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Irányítószám</mat-label>
+          <input type="text" matInput formControlName="postal" />
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="field">
+        <mat-label>Város</mat-label>
+        <input type="text" matInput formControlName="city" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="field">
+        <mat-label>Utca, házszám</mat-label>
+        <input type="text" matInput formControlName="street" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="field">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="field">
+        <mat-label>Telefonszám</mat-label>
+        <input type="tel" matInput formControlName="phone" />
+      </mat-form-field>
+
+      <h3>Átvételi mód</h3>
+      <div class="radio-group">
+        <mat-radio-group
+          formControlName="deliveryMethod"
+          (change)="onDeliveryChange($event.value)"
+        >
+          <mat-radio-button value="pickup">Személyes átvétel</mat-radio-button>
+          <mat-radio-button value="delivery">Házhozszállítás</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div *ngIf="isDelivery" class="delivery-address">
+        <h3>Szállítási cím</h3>
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Város</mat-label>
+          <input type="text" matInput formControlName="deliveryCity" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Utca, házszám</mat-label>
+          <input type="text" matInput formControlName="deliveryStreet" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Irányítószám</mat-label>
+          <input type="text" matInput formControlName="deliveryZip" />
+        </mat-form-field>
+      </div>
+
+      <h3>Fizetési mód</h3>
+      <div class="radio-group">
+        <mat-radio-group formControlName="paymentMethod">
+          <mat-radio-button value="card"
+            >Bankkártya (OTP SimplePay)</mat-radio-button
+          >
+          <mat-radio-button value="cash">Készpénz</mat-radio-button>
+          <mat-radio-button value="bank">Banki átutalás</mat-radio-button>
+          <mat-radio-button value="paypal">PayPal</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <h3>Megjegyzés</h3>
+      <mat-form-field appearance="outline" class="field">
+        <mat-label>Megjegyzés (opcionális)</mat-label>
+        <textarea matInput formControlName="comment" rows="3"></textarea>
+      </mat-form-field>
+
+      <div class="terms-checkbox">
+        <mat-checkbox formControlName="acceptTerms">
+          Elfogadom az Általános Szerződési Feltételeket
+        </mat-checkbox>
+      </div>
+
+      <div class="submit-button">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="!orderForm.valid"
+        >
+          Megrendelés
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

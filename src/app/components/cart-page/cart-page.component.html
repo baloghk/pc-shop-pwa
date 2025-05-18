@@ -56,10 +56,10 @@
         <p>Összesen</p>
         <p class="total-price">{{ totalPrice | currency }}</p>
       </div>
-      <button mat-button class="checkout-button">
-        <span class="pay-text"
-          >Tovább a pénztárhoz <mat-icon>arrow_forward</mat-icon></span
-        >
+      <button mat-button class="checkout-button" (click)="goToOrder()">
+        <span class="pay-text">
+          Tovább a pénztárhoz <mat-icon>arrow_forward</mat-icon>
+        </span>
       </button>
     </div>
   </div>

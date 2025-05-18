@@ -39,6 +39,10 @@ export const routes: Routes = [
     loadComponent: () => import('./components/product-page/product-page.component').then(c => c.ProductPageComponent),
   },
   {
+    path: 'order',
+    loadComponent: () => import('./components/order-page/order-page.component').then(c => c.OrderPageComponent),
+  },
+  {
     path: '**',
     redirectTo: 'main',
   },
