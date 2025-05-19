@@ -1,0 +1,20 @@
+<div class="orders">
+  <div class="order-container">
+    <div *ngFor="let order of Orders" class="order-card">
+      <div class="id">Azonosító: {{ order.id }}</div>
+      <div class="item-list">
+        <p>Termékek:</p>
+        <div *ngFor="let item of order.items" class="item">
+          <p>{{ item.name }} - {{ item.quantity }} db</p>
+        </div>
+      </div>
+
+      <div class="order-footer">
+        <div class="price">Összesen: {{ order.price }} Ft</div>
+        <button mat-button (click)="deleteOrder(order)">
+          <p><mat-icon>delete</mat-icon></p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -34,7 +34,6 @@ export class UsersFirebaseService {
         username,
         forename,
         surname,
-        createdAt: new Date(),
       });
 
       console.log('Felhasználó sikeresen regisztrálva és adatbázisba mentve.');

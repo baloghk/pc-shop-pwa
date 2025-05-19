@@ -8,6 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgIf } from '@angular/common';
+import { OrderFirebaseService } from '../../services/firebase/orders/order-firebase.service';
+import { Product } from '../../shared/product';
+import { Router } from '@angular/router';
+import { ManagementService } from '../../services/management/management.service';
 
 @Component({
   selector: 'app-order-page',
@@ -28,8 +32,25 @@ import { NgIf } from '@angular/common';
 export class OrderPageComponent {
   orderForm: FormGroup;
   isDelivery: boolean = false;
+  Products: Product[] = [];
+  totalPrice: number = 0;
 
-  constructor(private fb: FormBuilder) {
+  ngOnInit() {
+    const state = history.state;
+    if (state && state.products && state.totalPrice) {
+      this.Products = state.products;
+      this.totalPrice = state.totalPrice;
+    } else {
+      console.error('Products not found in state');
+    }
+  }
+
+  constructor(
+    private fb: FormBuilder,
+    private orderService: OrderFirebaseService,
+    private router: Router,
+    private managementService: ManagementService
+  ) {
     this.orderForm = this.fb.group({
       forename: ['', Validators.required],
       surname: ['', Validators.required],
@@ -47,6 +68,9 @@ export class OrderPageComponent {
       deliveryZip: [''],
       acceptTerms: [false, Validators.requiredTrue],
     });
+    const navigation = this.router.getCurrentNavigation();
+    this.Products = navigation?.extras.state?.['products'];
+    this.totalPrice = navigation?.extras.state?.['totalPrice'];
   }
 
   onDeliveryChange(method: string): void {
@@ -67,23 +91,30 @@ export class OrderPageComponent {
   }
 
   onOrder(): void {
-    if (this.orderForm.valid) {
-      const orderData = this.orderForm.value;
-      console.log('Order submitted:', orderData);
-      alert('Rendelés sikeresen leadva!');
-      this.orderForm.reset();
-      this.orderForm.patchValue({
-        deliveryMethod: 'pickup',
-        paymentMethod: 'card',
-      });
-      this.isDelivery = false;
-    } else {
-      Object.keys(this.orderForm.controls).forEach((key) => {
-        const control = this.orderForm.get(key);
-        if (control?.invalid) {
+    if (this.managementService.getProductCount() === 0) {
+      alert('A kosár üres!');
+      return;
+    }
+    if (!this.orderForm.valid) {
+      Object.values(this.orderForm.controls).forEach((control) => {
+        if (control.invalid) {
           control.markAsTouched();
         }
       });
+      return;
     }
+
+    const orderData = this.orderForm.value;
+    this.orderService
+      .createOrder(this.Products, this.totalPrice, orderData.comment)
+      .then(() => {
+        alert('Rendelés sikeresen leadva!');
+        this.managementService.clearCart();
+        this.router.navigate(['/main']);
+      })
+      .catch((error) => {
+        console.error('Hiba történt a rendelés leadásakor:', error);
+        alert('Hiba történt a rendelés leadásakor. Kérjük, próbálja újra.');
+      });
   }
 }

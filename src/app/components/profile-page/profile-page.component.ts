@@ -3,21 +3,27 @@ import { AuthFirebaseService } from '../../services/firebase/authorization/auth-
 import { MatDialog } from '@angular/material/dialog';
 import { PasswordChangeDialogComponent } from '../dialogs/password/password-change-dialog.component';
 import { MatButton } from '@angular/material/button';
+import { OrderComponent } from '../order/order.component';
+import { NgIf } from '@angular/common';
+import { OrderFirebaseService } from '../../services/firebase/orders/order-firebase.service';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss'],
-  imports: [MatButton],
+  imports: [MatButton, OrderComponent, NgIf],
 })
 export class ProfilePageComponent implements OnInit {
   username = '';
   email = '';
   name = '';
 
+  isOrdersEmpty = true;
+
   constructor(
     private authService: AuthFirebaseService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private orderService: OrderFirebaseService
   ) {}
 
   ngOnInit() {
@@ -27,6 +33,9 @@ export class ProfilePageComponent implements OnInit {
         this.email = user.email ?? 'N/A';
         this.username = user.username ?? 'N/A';
       }
+    });
+    this.orderService.getOrdersCollection().subscribe((orders) => {
+      this.isOrdersEmpty = orders.length === 0;
     });
   }
 

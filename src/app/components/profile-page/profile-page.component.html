@@ -18,10 +18,13 @@
         <p>Felhasználónév: {{ username }}</p>
       </div>
     </div>
-    <div class="profile-shipping-data">
-      <h4>CÍMEID</h4>
+    <div class="profile-order-data">
+      <h4>RENDELÉSEID</h4>
       <div>
-        <p>Még nincsenek mentett címeid</p>
+        <div class="empty-message" *ngIf="isOrdersEmpty">
+          <p>Nincsenek még leadott rendeléseid!</p>
+        </div>
+        <app-order></app-order>
       </div>
     </div>
     <div>
