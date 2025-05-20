@@ -32,7 +32,10 @@ export class ManagementService {
 
     request.onsuccess = (event: any) => {
       this.db = event.target.result;
-      this.loadProducts();
+      this.loadProducts().then((products) => {
+        this.products = products;
+        this.recalculateCartQuantity();
+      });
     };
   }
 
@@ -209,6 +212,7 @@ export class ManagementService {
     );
   }
 
+  // Kosár mennyiségének újraszámítása
   public recalculateCartQuantity(): void {
     const transaction = this.db.transaction(this.objectStoreName, 'readonly');
     const objectStore = transaction.objectStore(this.objectStoreName);

@@ -7,12 +7,17 @@ import {
   reauthenticateWithCredential,
   updatePassword,
 } from '@angular/fire/auth';
+import { AuthFirebaseService } from '../authorization/auth-firebase.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersFirebaseService {
-  constructor(private firestore: Firestore, private auth: Auth) {}
+  constructor(
+    private firestore: Firestore,
+    private auth: Auth,
+    private authService: AuthFirebaseService
+  ) {}
 
   async registerUser(
     email: string,
@@ -36,6 +41,7 @@ export class UsersFirebaseService {
         surname,
       });
 
+      await this.authService.login(email, password);
       console.log('Felhasználó sikeresen regisztrálva és adatbázisba mentve.');
     } catch (error) {
       console.error('Hiba a regisztráció során:', error);

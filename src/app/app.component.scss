@@ -490,17 +490,7 @@ router-outlet {
   }
 
   .navbar-right li {
-    display: flex;
-    align-items: center;
-  }
-
-  .navbar-right li:nth-child(1) {
-    order: 1;
     margin-left: 20px;
-    transition: transform 0.3s, color 0.3s;
-  }
-  .navbar-right li:nth-child(2) {
-    order: 1;
   }
 
   .navbar-right li:nth-child(1) mat-icon,
@@ -513,10 +503,18 @@ router-outlet {
     color: gray;
   }
 
-  .navbar-right li:nth-child(3) {
+  .navbar-right li:first-child {
+    margin-left: 20px;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  .navbar-right li:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .navbar-right li:last-child {
     margin-left: auto;
     margin-right: 30px;
-    order: 2;
   }
 
   .footer-content {
