@@ -8,11 +8,11 @@ export class CartNumberService {
   private itemsInCart = new BehaviorSubject<number>(0);
   itemsInCart$ = this.itemsInCart.asObservable();
 
-  setCurrency(amount: number): void {
+  setQuantity(amount: number): void {
     this.itemsInCart.next(amount);
   }
 
-  getCurrency(): number {
+  getQuantity(): number {
     return this.itemsInCart.getValue();
   }
 }

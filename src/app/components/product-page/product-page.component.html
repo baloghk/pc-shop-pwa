@@ -33,7 +33,11 @@
           </p>
         </div>
         <div class="cart-button">
-          <button mat-button (click)="managementService.createProduct(product)" (click)="alert()">
+          <button
+            mat-button
+            (click)="managementService.createProduct(product)"
+            (click)="alert()"
+          >
             <p>HOZZÁADOM A KOSÁRHOZ <mat-icon>shopping_cart</mat-icon></p>
           </button>
         </div>

@@ -57,7 +57,7 @@ export class ManagementService {
 
         updateRequest.onsuccess = () => {
           console.log('Termék mennyisége frissítve:', existingProduct);
-          this.cartService.setCurrency(this.cartService.getCurrency() + 1);
+          this.cartService.setQuantity(this.cartService.getQuantity() + 1);
 
           const index = this.products.findIndex(
             (p) => p.id === existingProduct.id
@@ -81,7 +81,7 @@ export class ManagementService {
           };
           this.products.push(newProduct);
           console.log('Új termék hozzáadva:', newProduct);
-          this.cartService.setCurrency(this.cartService.getCurrency() + 1);
+          this.cartService.setQuantity(this.cartService.getQuantity() + 1);
         };
 
         addRequest.onerror = (event: any) => {
@@ -156,7 +156,7 @@ export class ManagementService {
     request.onsuccess = () => {
       console.log('Termék törölve:', id);
       this.products = this.products.filter((product) => product.id !== id);
-      this.cartService.setCurrency(this.cartService.getCurrency() - 1);
+      this.cartService.setQuantity(this.cartService.getQuantity() - 1);
     };
 
     request.onerror = (event: any) => {
@@ -174,7 +174,7 @@ export class ManagementService {
     request.onsuccess = () => {
       console.log('Kosár kiürítve');
       this.products = [];
-      this.cartService.setCurrency(0);
+      this.cartService.setQuantity(0);
     };
 
     request.onerror = (event: any) => {
@@ -225,7 +225,7 @@ export class ManagementService {
         0
       );
 
-      this.cartService.setCurrency(totalQuantity);
+      this.cartService.setQuantity(totalQuantity);
     };
   }
 }

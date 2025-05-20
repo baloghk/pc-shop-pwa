@@ -18,7 +18,7 @@
   margin: 0px;
   padding: 16px;
   width: 275px;
-  height: 325px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,8 +36,14 @@
   margin-left: 20px;
 }
 
+.product-name {
+  mat-card-title {
+    font-size: 16px !important;
+  }
+}
+
 .product-card img {
-  margin-top: 10px;
+  margin-bottom: 10px;
   width: 75%;
 }
 

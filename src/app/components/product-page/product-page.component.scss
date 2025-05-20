@@ -1,6 +1,9 @@
 .product-page {
-  min-height: 60vh;
+  min-height: 75vh;
   margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 button {
@@ -8,12 +11,6 @@ button {
   color: white !important;
   border-radius: 5px;
   width: 200px;
-}
-
-.product-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .link-tree {
@@ -170,15 +167,46 @@ button {
   }
 }
 
+@media (max-width: 1124px) {
+  .product-page {
+    width: 100%;
+    min-height: 90vh;
+  }
+
+  .product-details {
+    width: 300px;
+    height: 500px;
+  }
+
+  .product-details-warranty {
+    .warranty-box {
+      width: auto;
+    }
+  }
+
+  .product-img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
 @media (max-width: 768px) {
   .product-page {
     margin-top: 130px;
     width: 100%;
+    min-height: 135vh;
     .link-tree {
       width: 100%;
       justify-content: start;
-      margin-left: 50px;
-      gap: 3px;
+
+      width: 80%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: start;
+      font-size: 12px;
+      gap: 6px;
+      word-break: break-word;
     }
     .product-card {
       width: 90%;
