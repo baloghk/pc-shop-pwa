@@ -342,6 +342,12 @@ router-outlet {
   }
 }
 
+.welcome-msg {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
 .footer-links {
   display: flex;
   flex-direction: column;

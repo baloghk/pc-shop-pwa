@@ -7,8 +7,9 @@ import { MatIconButton } from '@angular/material/button';
 import { MatButton } from '@angular/material/button';
 import { CurrencyService } from './services/currency/currency.service';
 import { CartAlertComponent } from './components/cart-alert/cart-alert.component';
-import { NgIf } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { AuthFirebaseService } from './services/firebase/authorization/auth-firebase.service';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { AuthFirebaseService } from './services/firebase/authorization/auth-fire
     MatButton,
     CartAlertComponent,
     NgIf,
+    AsyncPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -46,11 +48,16 @@ export class AppComponent {
 
   isLoggedIn = false;
 
+  name$: Observable<string> | undefined;
+
   ngOnInit() {
     this.checkIfMobile();
     this.authService.isLoggedIn().subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
+    this.name$ = this.authService
+      .getUserProfile()
+      .pipe(map((user) => user?.surname ?? ''));
   }
 
   @HostListener('window:resize', ['$event'])

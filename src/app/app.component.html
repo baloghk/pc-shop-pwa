@@ -31,7 +31,7 @@
     </button>
   </div>
   <ul class="navbar-right">
-    <li *ngIf="!isLoggedIn">
+    <li *ngIf="!isLoggedIn; else welcomeLabel">
       <a routerLink="/login"
         ><ng-container *ngIf="isMobile; else loginLabel">
           <mat-icon>login</mat-icon>
@@ -39,6 +39,9 @@
         <ng-template #loginLabel> Bejelentkezés</ng-template></a
       >
     </li>
+    <ng-template #welcomeLabel>
+      <p class="welcome-msg">Üdvözlünk, {{ name$ | async }}!</p>
+    </ng-template>
     <li>
       <a routerLink="/profile"
         ><ng-container *ngIf="isMobile; else profileLabel">
