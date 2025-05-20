@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { Product } from '../../shared/product';
+import { CartNumberService } from '../cart/cart-number.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class ManagementService {
   private dbReady: Promise<void>;
   public products: Product[] = [];
 
-  constructor() {
+  constructor(private cartService: CartNumberService) {
     const request = indexedDB.open('products-db', 1);
     this.dbReady = this.initDB();
 
@@ -53,6 +54,7 @@ export class ManagementService {
 
         updateRequest.onsuccess = () => {
           console.log('Termék mennyisége frissítve:', existingProduct);
+          this.cartService.setCurrency(this.cartService.getCurrency() + 1);
 
           const index = this.products.findIndex(
             (p) => p.id === existingProduct.id
@@ -76,6 +78,7 @@ export class ManagementService {
           };
           this.products.push(newProduct);
           console.log('Új termék hozzáadva:', newProduct);
+          this.cartService.setCurrency(this.cartService.getCurrency() + 1);
         };
 
         addRequest.onerror = (event: any) => {
@@ -150,6 +153,7 @@ export class ManagementService {
     request.onsuccess = () => {
       console.log('Termék törölve:', id);
       this.products = this.products.filter((product) => product.id !== id);
+      this.cartService.setCurrency(this.cartService.getCurrency() - 1);
     };
 
     request.onerror = (event: any) => {
@@ -167,6 +171,7 @@ export class ManagementService {
     request.onsuccess = () => {
       console.log('Kosár kiürítve');
       this.products = [];
+      this.cartService.setCurrency(0);
     };
 
     request.onerror = (event: any) => {
@@ -186,6 +191,11 @@ export class ManagementService {
         product.quantity = quantity;
         objectStore.put(product).onsuccess = () => {
           console.log('Termék mennyisége frissítve:', id, quantity);
+          if (quantity === 0) {
+            this.recalculateCartQuantity();
+          } else {
+            this.recalculateCartQuantity();
+          }
         };
       }
     };
@@ -197,5 +207,21 @@ export class ManagementService {
       (sum, product) => sum + (product.quantity || 0),
       0
     );
+  }
+
+  public recalculateCartQuantity(): void {
+    const transaction = this.db.transaction(this.objectStoreName, 'readonly');
+    const objectStore = transaction.objectStore(this.objectStoreName);
+    const request = objectStore.getAll();
+
+    request.onsuccess = (event: any) => {
+      const products = event.target.result;
+      const totalQuantity = products.reduce(
+        (sum: number, product: any) => sum + (product.quantity || 0),
+        0
+      );
+
+      this.cartService.setCurrency(totalQuantity);
+    };
   }
 }

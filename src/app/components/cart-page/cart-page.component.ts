@@ -7,6 +7,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIconButton } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Product } from '../../shared/product';
+import { CartNumberService } from '../../services/cart/cart-number.service';
 
 @Component({
   selector: 'app-cart-page',
