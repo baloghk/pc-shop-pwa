@@ -1,85 +1,93 @@
-.registration-page {
-  min-height: 60vh;
-  margin-top: 120px;
-}
+$primary-color: blueviolet;
+$form-bg-color: white;
+$text-color: black;
+$box-shadow-color: rgba(0.1, 0.1, 0.1, 0.1);
+$form-width: 400px;
+$form-padding: 20px 40px 40px 40px;
+$button-height: 50px;
 
-.registration-form {
+@mixin flex-column-center($gap: 1rem) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  width: 400px;
-  margin: auto;
-  background-color: white;
-  padding: 20px 40px 40px 40px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.1);
+  gap: $gap;
 }
 
-.registration-form h3 {
-  align-self: flex-start;
-}
+.registration-page {
+  min-height: 60vh;
+  margin-top: 120px;
 
-.name-fields {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-}
-
-form {
-  width: 100%;
-}
-
-.name-fields mat-form-field {
-  flex: 1;
-}
-
-mat-form-field {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-mat-form-field input {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  color: black !important;
-}
-
-button {
-  background-color: blueviolet;
-  text-align: center;
-  width: 100%;
-  border-radius: 0px;
-  color: white !important;
-  font-size: 1rem;
-  height: 50px;
-  margin-bottom: 0;
-}
-
-mat-label {
-  color: black;
-}
-
-p {
-  font-size: 0.85rem;
-}
-
-@media (max-width: 768px) {
-  .registration-page {
+  @media (max-width: 768px) {
     margin-top: 140px;
     width: 100%;
   }
 
   .registration-form {
-    width: 70%;
-  }
+    @include flex-column-center;
+    width: $form-width;
+    margin: auto;
+    background-color: $form-bg-color;
+    padding: $form-padding;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px $box-shadow-color;
 
-  .name-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    width: 100%;
+    @media (max-width: 768px) {
+      width: 70%;
+    }
+
+    h3 {
+      align-self: flex-start;
+    }
+
+    form {
+      width: 100%;
+
+      .name-fields {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        mat-form-field {
+          flex: 1;
+        }
+      }
+
+      mat-form-field {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+
+        input {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+          color: $text-color !important;
+        }
+      }
+
+      button {
+        background-color: $primary-color;
+        text-align: center;
+        width: 100%;
+        border-radius: 0;
+        color: white !important;
+        font-size: 1rem;
+        height: $button-height;
+        margin-bottom: 0;
+      }
+    }
+
+    mat-label {
+      color: $text-color;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
   }
 }

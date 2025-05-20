@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  Firestore,
-  collection,
-  collectionData,
-  query,
-  where,
-} from '@angular/fire/firestore';
-import { filter, from, map, mergeMap, Observable, tap, toArray } from 'rxjs';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
