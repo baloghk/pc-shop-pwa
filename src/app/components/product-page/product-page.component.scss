@@ -14,7 +14,7 @@ button {
 }
 
 .link-tree {
-  width: 80%;
+  width: 1000px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -188,13 +188,17 @@ button {
     width: 400px;
     height: 400px;
   }
+
+  .link-tree {
+    width: 600px;
+  }
 }
 
 @media (max-width: 768px) {
   .product-page {
     margin-top: 130px;
     width: 100%;
-    min-height: 135vh;
+    min-height: 170vh;
     .link-tree {
       width: 100%;
       justify-content: start;

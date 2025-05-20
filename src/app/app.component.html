@@ -65,7 +65,22 @@
 
 <nav class="menu" [class.hidden]="!menuVisible">
   <ul>
-    <li><a routerLink="/product" (click)="toggleMenu()">Termékek</a></li>
+    <li>
+      <a
+        routerLink="/product"
+        [queryParams]="{ category: 'Számítógép alkatrész' }"
+        (click)="toggleMenu()"
+        >Számítógép alkatrész</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/product"
+        [queryParams]="{ category: 'Notebook' }"
+        (click)="toggleMenu()"
+        >Notebook</a
+      >
+    </li>
   </ul>
 </nav>
 
