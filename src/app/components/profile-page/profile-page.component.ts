@@ -34,7 +34,7 @@ export class ProfilePageComponent implements OnInit {
         this.username = user.username ?? 'N/A';
       }
     });
-    this.orderService.getOrdersCollection().subscribe((orders) => {
+    this.orderService.getOrdersByUser().subscribe((orders) => {
       this.isOrdersEmpty = orders.length === 0;
     });
   }

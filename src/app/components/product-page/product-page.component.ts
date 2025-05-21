@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Product } from '../../shared/product';
 import { MatButton } from '@angular/material/button';
 import { ManagementService } from '../../services/management/management.service';
@@ -9,7 +9,7 @@ import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-product-page',
-  imports: [MatButton, CurrencyPipe, MatIcon, NgFor],
+  imports: [MatButton, CurrencyPipe, MatIcon, NgFor, RouterModule],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.scss',
 })

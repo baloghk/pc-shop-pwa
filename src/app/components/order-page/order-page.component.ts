@@ -12,6 +12,9 @@ import { OrderFirebaseService } from '../../services/firebase/orders/order-fireb
 import { Product } from '../../shared/product';
 import { Router } from '@angular/router';
 import { ManagementService } from '../../services/management/management.service';
+import { UserProfile } from '../../shared/user';
+import { Shipping } from '../../shared/shipping';
+import { AuthFirebaseService } from '../../services/firebase/authorization/auth-firebase.service';
 
 @Component({
   selector: 'app-order-page',
@@ -31,6 +34,8 @@ import { ManagementService } from '../../services/management/management.service'
 })
 export class OrderPageComponent {
   orderForm: FormGroup;
+  user?: UserProfile;
+  shipping?: Shipping;
   isDelivery: boolean = false;
   Products: Product[] = [];
   totalPrice: number = 0;
@@ -43,13 +48,17 @@ export class OrderPageComponent {
     } else {
       console.error('Products not found in state');
     }
+    this.authService.getUserProfile().subscribe((profile) => {
+      this.user = profile || undefined;
+    });
   }
 
   constructor(
     private fb: FormBuilder,
     private orderService: OrderFirebaseService,
     private router: Router,
-    private managementService: ManagementService
+    private managementService: ManagementService,
+    private authService: AuthFirebaseService
   ) {
     this.orderForm = this.fb.group({
       forename: ['', Validators.required],
@@ -103,10 +112,29 @@ export class OrderPageComponent {
       });
       return;
     }
-
     const orderData = this.orderForm.value;
+
+    if (this.isDelivery) {
+      this.shipping = {
+        country: orderData.country,
+        postalCode: orderData.deliveryZip,
+        city: orderData.deliveryCity,
+        address: orderData.deliveryStreet,
+        phone: orderData.phone,
+      };
+    } else {
+      this.shipping = undefined;
+    }
+
     this.orderService
-      .createOrder(this.Products, this.totalPrice, orderData.comment)
+      .createOrder(
+        orderData.email,
+        this.Products,
+        this.totalPrice,
+        this.user,
+        this.shipping,
+        orderData.comment
+      )
       .then(() => {
         alert('Rendelés sikeresen leadva!');
         this.managementService.clearCart();

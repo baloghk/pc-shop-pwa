@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CartNumberService } from '../../services/cart/cart-number.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-cart-alert',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, NgIf],
   templateUrl: './cart-alert.component.html',
   styleUrl: './cart-alert.component.scss',
 })

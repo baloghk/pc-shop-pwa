@@ -1,3 +1,3 @@
-<div class="cart-alert">
+<div class="cart-alert" *ngIf="cartService.getQuantity() > 0">
   <p>{{ cartService.itemsInCart$ | async }}</p>
 </div>

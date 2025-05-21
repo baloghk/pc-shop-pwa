@@ -66,6 +66,7 @@ export class CartPageComponent {
     this.totalPrice = this.products.reduce((acc, product) => {
       return acc + product.price * product.quantity;
     }, 0);
+    this.isCartEmpty = this.totalPrice === 0;
   }
 
   changeQuantity(product: any, quantity: number) {

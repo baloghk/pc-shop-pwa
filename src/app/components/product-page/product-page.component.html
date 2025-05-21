@@ -1,12 +1,14 @@
 <div class="product-page">
   <div class="link-tree">
-    <a href="">iBit</a>
+    <a routerLink="/main">iBit</a>
     <p class="not-clickable">/</p>
-    <a href="">{{ product.category }}</a>
+    <a routerLink="/product" [queryParams]="{ category: product.category }">{{
+      product.category
+    }}</a>
     <p class="not-clickable">/</p>
-    <a href="">{{ product.subcategory }}</a>
+    <a routerLink="/main">{{ product.subcategory }}</a>
     <p class="not-clickable">/</p>
-    <a href="">{{ product.brand }}</a>
+    <a routerLink="/main">{{ product.brand }}</a>
     <p class="not-clickable">/</p>
     <p class="not-clickable">{{ product.name }}</p>
   </div>

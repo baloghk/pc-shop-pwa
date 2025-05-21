@@ -19,7 +19,7 @@ export class OrderComponent {
   Orders: Order[] = [];
 
   ngOnInit() {
-    this.orderService.getOrdersCollection().subscribe((orders) => {
+    this.orderService.getOrdersByUser().subscribe((orders) => {
       this.Orders = orders;
     });
   }

@@ -76,7 +76,7 @@ html {
 .menu {
   position: fixed;
   top: $height-navbar;
-  margin-left: 200px;
+  margin-left: 190px;
   width: $width-menu;
   background-color: $color-secondary;
   z-index: $z-index-menu;
@@ -128,7 +128,7 @@ body.menu-open {
 .currency-menu {
   position: fixed;
   top: $height-navbar;
-  margin-left: 1360px;
+  margin-left: 1350px;
   background-color: $color-secondary;
   z-index: $z-index-menu;
   padding: $spacing-lg;
@@ -406,7 +406,7 @@ router-outlet {
 
 @media (max-width: $breakpoint-desktop) {
   .currency-menu {
-    margin-left: 810px;
+    margin-left: 800px;
   }
 
   .search-bar-container {
@@ -416,11 +416,11 @@ router-outlet {
 
 @media (max-width: $breakpoint-tablet) {
   .menu {
-    margin-left: 150px;
+    margin-left: 140px;
   }
 
   .currency-menu {
-    margin-left: 400px;
+    margin-left: 390px;
   }
 
   .search-bar-container {

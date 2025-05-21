@@ -67,6 +67,9 @@
 <nav class="menu" [class.hidden]="!menuVisible">
   <ul>
     <li>
+      <a routerLink="/product" (click)="toggleMenu()">Összes termék</a>
+    </li>
+    <li>
       <a
         routerLink="/product"
         [queryParams]="{ category: 'Számítógép alkatrész' }"
