@@ -41,7 +41,8 @@
     </li>
     <ng-template #welcomeLabel>
       <p *ngIf="!isMobile" class="welcome-msg">
-        Üdvözlünk, {{ name$ | async }}!
+        Üdvözlünk,&nbsp;<span appName> {{ name$ | async }}</span
+        >!
       </p>
     </ng-template>
     <li>

@@ -5,10 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { OrderFirebaseService } from '../../services/firebase/orders/order-firebase.service';
+import { CurrencyPipe } from '../../shared/currency-pipe/currency.pipe';
 
 @Component({
   selector: 'app-order',
-  imports: [MatCardModule, MatButtonModule, MatIconModule, NgFor],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, NgFor, CurrencyPipe],
   templateUrl: './order.component.html',
   styleUrl: './order.component.scss',
 })

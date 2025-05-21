@@ -10,7 +10,7 @@
       </div>
 
       <div class="order-footer">
-        <div class="price">Összesen: {{ order.price }} Ft</div>
+        <div class="price">Összesen: {{ order.price | currency }}</div>
         <button mat-button (click)="deleteOrder(order)">
           <p><mat-icon>delete</mat-icon></p>
         </button>

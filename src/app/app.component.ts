@@ -10,6 +10,7 @@ import { CartAlertComponent } from './components/cart-alert/cart-alert.component
 import { AsyncPipe, NgIf } from '@angular/common';
 import { AuthFirebaseService } from './services/firebase/authorization/auth-firebase.service';
 import { map, Observable } from 'rxjs';
+import { NameDirective } from './shared/name-directive/name.directive';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { map, Observable } from 'rxjs';
     CartAlertComponent,
     NgIf,
     AsyncPipe,
+    NameDirective,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
