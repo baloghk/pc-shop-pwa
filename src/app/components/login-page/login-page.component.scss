@@ -31,7 +31,7 @@ $shadow-color: rgba(0.1, 0.1, 0.1, 0.1);
     height: $button-height;
 
     &:hover {
-      background-color: lighten($primary-color, 5%);
+      background-color: adjust($primary-color, 5%);
     }
 
     &.reg_btn {
@@ -48,6 +48,10 @@ $shadow-color: rgba(0.1, 0.1, 0.1, 0.1);
   padding: 20px 40px 50px 40px;
   border-radius: 5px;
   box-shadow: 0 2px 4px $shadow-color;
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
 
   h3 {
     align-self: flex-start;

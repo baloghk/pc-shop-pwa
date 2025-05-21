@@ -1,3 +1,5 @@
+@import "../styles/variables.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -18,12 +20,12 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgb(43, 40, 202);
+  background-color: $color-primary;
   transition: transform 0.3s ease;
-  padding: 15px 30px;
-  z-index: 1000;
+  padding: $spacing-md $spacing-xl;
+  z-index: $z-index-navbar;
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: $box-shadow-default;
 }
 
 .navbar.hidden {
@@ -34,7 +36,7 @@ html {
   display: flex;
   align-items: center;
   flex-grow: 1;
-  gap: 20px;
+  gap: $spacing-lg;
 }
 
 .logo-pic {
@@ -44,43 +46,43 @@ html {
 }
 
 .logo {
-  font-size: 36px;
+  font-size: $font-size-xxl;
   font-weight: bold;
-  color: white;
+  color: $color-white;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
+  margin-right: $spacing-lg;
 }
 
 .menu_btn {
-  background-color: rgb(72, 22, 119);
-  color: white !important;
+  background-color: $color-secondary;
+  color: $color-white !important;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  height: 35px;
-  padding: 0px 30px;
-  margin-left: 30px;
+  gap: $spacing-xs;
+  height: $height-button;
+  padding: 0px $spacing-xl;
+  margin-left: $spacing-xl;
 }
 
 .currency {
-  padding: 0px 30px;
+  padding: 0px $spacing-xl;
 }
 
 .menu {
   position: fixed;
-  top: 70px;
+  top: $height-navbar;
   margin-left: 200px;
-  width: 500px;
-  background-color: rgb(72, 22, 119);
-  z-index: 999;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-height: calc(100vh - 70px);
+  width: $width-menu;
+  background-color: $color-secondary;
+  z-index: $z-index-menu;
+  padding: $spacing-lg;
+  box-shadow: $box-shadow-default;
+  max-height: calc(100vh - $height-navbar);
   overflow-y: auto;
 }
 
@@ -96,22 +98,22 @@ html {
 }
 
 .menu ul li {
-  padding: 10px 0;
+  padding: $spacing-sm 0;
 }
 
 .menu ul li a {
-  color: white;
+  color: $color-white;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s;
   display: block;
-  padding: 8px 15px;
-  border-radius: 4px;
+  padding: 8px $spacing-md;
+  border-radius: $border-radius-sm;
 }
 
 .menu ul li a:hover {
-  color: #ccc;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: $color-light-gray;
+  background-color: $color-transparent-white;
 }
 
 body.menu-open {
@@ -119,20 +121,20 @@ body.menu-open {
 }
 
 .currency {
-  height: 35px;
+  height: $height-button;
 }
 
 .currency-menu {
   position: fixed;
-  top: 70px;
+  top: $height-navbar;
   margin-left: 1360px;
-  background-color: rgb(72, 22, 119);
-  z-index: 999;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-height: calc(100vh - 70px);
+  background-color: $color-secondary;
+  z-index: $z-index-menu;
+  padding: $spacing-lg;
+  box-shadow: $box-shadow-default;
+  max-height: calc(100vh - $height-navbar);
   overflow-y: auto;
-  width: 200px;
+  width: $width-currency-menu;
   li {
     list-style: none;
   }
@@ -140,20 +142,20 @@ body.menu-open {
   button {
     justify-content: flex-start;
     text-align: left;
-    color: white !important;
+    color: $color-white !important;
     font-weight: 400;
     width: 100%;
     text-align: start;
-    border-radius: 4px;
+    border-radius: $border-radius-sm;
     font-family: "Raleway", sans-serif;
-    height: 35px;
+    height: $height-button;
   }
 
   button:hover {
-    color: white !important;
+    color: $color-white !important;
     font-weight: 400;
-    color: #ccc;
-    background-color: rgba(255, 255, 255, 0.1);
+    color: $color-light-gray;
+    background-color: $color-transparent-white;
   }
 }
 
@@ -164,17 +166,17 @@ body.menu-open {
 }
 
 .search-bar-container {
-  height: 35px;
-  padding: 0 10px;
-  background: white;
-  border-radius: 32px;
+  height: $height-button;
+  padding: 0 $spacing-sm;
+  background: $color-white;
+  border-radius: $border-radius-lg;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: $spacing-sm;
+  margin-left: $spacing-sm;
   max-width: 1100px;
-  width: 1000px;
+  width: $width-search;
 }
 
 .search-bar-container input {
@@ -182,20 +184,20 @@ body.menu-open {
   outline: none;
   border: none;
   background: inherit;
-  padding: 0 10px;
+  padding: 0 $spacing-sm;
   width: 60vw;
   height: 80%;
 }
 
 .currency {
-  color: white !important;
-  background-color: rgb(72, 22, 119) !important;
+  color: $color-white !important;
+  background-color: $color-secondary !important;
 }
 
 .navbar-right {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: $spacing-lg;
   margin-left: auto;
 }
 
@@ -204,46 +206,46 @@ body.menu-open {
 }
 
 .navbar-right li a {
-  font-size: 16px;
+  font-size: $font-size-md;
 }
 
 .navbar-right a {
   text-decoration: none;
-  color: white;
-  font-size: 18px;
+  color: $color-white;
+  font-size: $font-size-lg;
   transition: color 0.3s;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: $spacing-xs;
 }
 
 .navbar-right a:hover {
-  color: gray;
+  color: $color-gray;
 }
 
 mat-icon {
-  color: white;
-  font-size: 1.5rem;
+  color: $color-white;
+  font-size: $font-size-icon;
 }
 
 .cart {
-  color: white;
-  font-size: 1.5rem;
+  color: $color-white;
+  font-size: $font-size-icon;
   transition: transform 0.3s, color 0.3s;
 }
 
 .cart:hover {
-  color: gray;
+  color: $color-gray;
 }
 
 .search-bar-container mat-icon {
-  color: black;
+  color: $color-black;
 }
 
 main,
 router-outlet {
   display: block;
-  margin-top: 70px;
+  margin-top: $height-navbar;
 }
 
 .overlay {
@@ -252,8 +254,8 @@ router-outlet {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
+  background-color: $color-transparent-black;
+  z-index: $z-index-overlay;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -272,10 +274,10 @@ router-outlet {
   bottom: 0;
   left: 0;
   width: 100%;
-  margin-top: 50px;
-  color: white;
+  margin-top: $spacing-xxl;
+  color: $color-white;
   hr {
-    margin-bottom: 10px;
+    margin-bottom: $spacing-sm;
   }
 }
 
@@ -283,9 +285,9 @@ router-outlet {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: $width-max-content;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 $spacing-lg;
   width: 100%;
 }
 
@@ -293,36 +295,36 @@ router-outlet {
   display: flex;
   flex-direction: column;
   width: 40%;
-  padding: 20px;
+  padding: $spacing-lg;
 }
 
 .newsletter-title {
-  font-size: 24px;
+  font-size: $font-size-xl;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: $spacing-sm;
 }
 
 .newsletter-input-group {
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
+  margin-top: $spacing-md;
 }
 
 .newsletter-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
+  padding: $spacing-sm;
+  border: 1px solid $color-light-gray;
+  border-radius: $border-radius-sm;
+  margin-right: $spacing-sm;
   width: 70%;
 }
 
 .newsletter-btn {
-  background-color: rgb(0, 166, 62);
-  color: white !important;
+  background-color: $color-green;
+  color: $color-white !important;
   border: none;
-  border-radius: 4px;
-  padding: 10px 15px;
-  margin-top: 10px;
+  border-radius: $border-radius-sm;
+  padding: $spacing-sm $spacing-md;
+  margin-top: $spacing-sm;
   cursor: pointer;
   width: 200px;
 
@@ -334,16 +336,16 @@ router-outlet {
   }
 
   mat-icon {
-    font-size: medium;
+    font-size: $font-size-medium;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 5px;
+    margin-left: $spacing-xs;
   }
 }
 
 .welcome-msg {
-  color: white;
+  color: $color-white;
   display: flex;
   align-items: center;
 }
@@ -352,12 +354,12 @@ router-outlet {
   display: flex;
   flex-direction: column;
   width: 50%;
-  padding: 20px;
+  padding: $spacing-lg;
 }
 
 .footer-logo {
-  height: 50px;
-  margin-bottom: 20px;
+  height: $spacing-xxl;
+  margin-bottom: $spacing-lg;
   display: flex;
   align-items: flex-start;
 }
@@ -370,38 +372,38 @@ router-outlet {
 .footer-column {
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
+  margin-right: $spacing-xl;
   font-weight: 600;
-  font-size: 14px;
+  font-size: $font-size-sm;
 }
 
 .footer-column p {
-  margin-bottom: 10px;
+  margin-bottom: $spacing-sm;
   cursor: pointer;
 }
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: $width-max-content;
   width: 100%;
-  padding: 20px;
+  padding: $spacing-lg;
 }
 
 .footer-upper {
   width: 100%;
-  background-color: rgb(72, 22, 119);
+  background-color: $color-secondary;
 }
 .footer-lower {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: rgb(43, 40, 202);
-  color: white;
+  background-color: $color-primary;
+  color: $color-white;
   font-weight: 500;
 }
 
-@media (max-width: 1920px) {
+@media (max-width: $breakpoint-desktop) {
   .currency-menu {
     margin-left: 810px;
   }
@@ -411,7 +413,7 @@ router-outlet {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: $breakpoint-tablet) {
   .menu {
     margin-left: 150px;
   }
@@ -439,9 +441,9 @@ router-outlet {
 }
 
 //Mobil nézet
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-mobile) {
   .navbar {
-    padding: 15px 10px;
+    padding: $spacing-md $spacing-sm;
     width: 100vw;
     .search-bar-container {
       display: none;
@@ -458,29 +460,29 @@ router-outlet {
 
   .navbar-right {
     position: fixed;
-    top: 70px;
+    top: $height-navbar;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: rgb(25, 21, 71);
+    background-color: $color-dark-blue;
     width: 100vw;
     left: 0;
-    height: 50px;
+    height: $spacing-xxl;
     transition: left 0.3s ease;
   }
 
   .menu,
   .currency-menu {
-    background-color: rgb(43, 40, 202);
+    background-color: $color-primary;
     margin-left: 0;
-    margin-top: 50px;
+    margin-top: $spacing-xxl;
     width: 100vw;
   }
 
   .menu_btn {
     margin-left: 0;
     order: 1;
-    background-color: rgb(43, 40, 202);
+    background-color: $color-primary;
     padding: 0;
   }
 
@@ -491,12 +493,12 @@ router-outlet {
 
   .currency {
     order: 3;
-    background-color: rgb(43, 40, 202) !important;
+    background-color: $color-primary !important;
     padding: 0;
   }
 
   .navbar-right li {
-    margin-left: 20px;
+    margin-left: $spacing-lg;
   }
 
   .navbar-right li:nth-child(1) mat-icon,
@@ -506,11 +508,11 @@ router-outlet {
 
   .navbar-right li:nth-child(1) mat-icon:hover,
   .navbar-right li:nth-child(2) mat-icon:hover {
-    color: gray;
+    color: $color-gray;
   }
 
   .navbar-right li:first-child {
-    margin-left: 20px;
+    margin-left: $spacing-lg;
     transition: transform 0.3s, color 0.3s;
   }
 
@@ -520,7 +522,7 @@ router-outlet {
 
   .navbar-right li:last-child {
     margin-left: auto;
-    margin-right: 30px;
+    margin-right: $spacing-xl;
   }
 
   .footer-content {
@@ -542,7 +544,7 @@ router-outlet {
   }
 
   .footer-lower {
-    font-size: 12px;
+    font-size: $font-size-sm;
   }
 
   .footer-columns {
@@ -550,7 +552,7 @@ router-outlet {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 5px;
+    padding: $spacing-xs;
   }
 
   .footer-column {

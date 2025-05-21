@@ -1,14 +1,18 @@
+$background-color: red;
+$number-color: white;
+$cart-alert-size: 20px;
+
 .cart-alert {
   position: absolute;
   top: 7px;
-  background-color: red;
-  color: white;
+  background-color: $background-color;
+  color: $number-color;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: $cart-alert-size;
+  width: $cart-alert-size;
   p {
     position: absolute;
     margin: 0;

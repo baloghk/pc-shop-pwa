@@ -1,3 +1,27 @@
+// Colors
+$color-white: white;
+$color-blueviolet: blueviolet;
+$color-red: red;
+
+// Spacing
+$spacing-xs: 2px;
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 40px;
+
+// Box shadow
+$box-shadow-default: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.1);
+
+// Border radius
+$border-radius: 5px;
+
+// Heights
+$button-height: 35px;
+
+// Widths
+$desktop-width: 700px;
+$mobile-breakpoint: 768px;
+
 .profile-page {
   min-height: 20vh;
   height: fit-content;
@@ -13,50 +37,50 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 700px;
+  width: $desktop-width;
 }
 
 .profile-data {
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 .profile-personal-data {
-  background-color: white;
-  padding: 20px 40px 40px 40px;
-  box-shadow: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.1);
-  margin-bottom: 2px;
+  background-color: $color-white;
+  padding: $spacing-md $spacing-lg $spacing-lg $spacing-lg;
+  box-shadow: $box-shadow-default;
+  margin-bottom: $spacing-xs;
 }
 
 .profile-order-data {
-  background-color: white;
-  padding: 20px 40px 40px 40px;
-  box-shadow: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.1);
+  background-color: $color-white;
+  padding: $spacing-md $spacing-lg $spacing-lg $spacing-lg;
+  box-shadow: $box-shadow-default;
 }
 
 .changepw-btn {
-  background-color: blueviolet;
-  color: white !important;
-  border-radius: 5px;
-  height: 35px;
-  padding: 20px 40px;
+  background-color: $color-blueviolet;
+  color: $color-white !important;
+  border-radius: $border-radius;
+  height: $button-height;
+  padding: $spacing-md $spacing-lg;
 }
 
 .logout-btn {
-  background-color: red;
-  color: white !important;
-  border-radius: 5px;
-  height: 35px;
-  padding: 20px 40px;
-  margin-top: 10px;
+  background-color: $color-red;
+  color: $color-white !important;
+  border-radius: $border-radius;
+  height: $button-height;
+  padding: $spacing-md $spacing-lg;
+  margin-top: $spacing-sm;
 }
 
 .empty-message {
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin: $spacing-md 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $mobile-breakpoint) {
   .profile-page {
     margin-top: 140px;
     width: 100%;
@@ -68,14 +92,14 @@
   }
 
   .profile-order-data {
-    padding: 20px 20px 40px 20px;
+    padding: $spacing-md $spacing-md $spacing-lg $spacing-md;
   }
 
   .header {
     width: 100%;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: $spacing-sm;
   }
 
   .name-fields {
@@ -90,11 +114,11 @@
   }
 
   .logout-btn {
-    background-color: red;
-    color: white !important;
-    border-radius: 5px;
-    height: 35px;
-    padding: 20px 40px;
+    background-color: $color-red;
+    color: $color-white !important;
+    border-radius: $border-radius;
+    height: $button-height;
+    padding: $spacing-md $spacing-lg;
     width: 100%;
   }
 }
